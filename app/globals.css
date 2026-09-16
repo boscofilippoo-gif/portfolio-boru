@@ -1,0 +1,144 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------
+   Token di marca BORU — gli stessi quattro colori di borustudio.it.
+   Nessun altro colore: i toni intermedi si ottengono con color-mix.
+   --------------------------------------------------------------- */
+@theme inline {
+  --color-nero: #1a1613;
+  --color-porcellana: #fcfaf6;
+  --color-azzurro: #b1ddf1;
+  --color-rosa: #ef95b4;
+
+  --font-sans: var(--font-hanken), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-poppins), var(--font-hanken), sans-serif;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--color-nero);
+}
+
+body {
+  background-color: var(--color-nero);
+  color: var(--color-porcellana);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+/* Occhiello: la microtipografia ricorrente del marchio.
+   Il 55% non è estetico ma di leggibilità: a 10px serve almeno 4.5:1
+   sul nero, e al 45% si sta esattamente sul limite. */
+.occhiello {
+  font-size: 0.625rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-porcellana) 55%, transparent);
+}
+
+::selection {
+  background-color: color-mix(in srgb, var(--color-azzurro) 85%, transparent);
+  color: var(--color-nero);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-azzurro);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------------------------------------------------------------
+   Griglia dei lavori.
+   A riposo si vede solo l'immagine. Il nome compare all'hover —
+   ma dove l'hover non esiste (touch) resta sempre leggibile,
+   altrimenti la griglia non direbbe niente a nessuno.
+   --------------------------------------------------------------- */
+.cella {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  background-color: color-mix(in srgb, var(--color-porcellana) 5%, transparent);
+}
+
+.cella-immagine {
+  transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 500ms cubic-bezier(0.22, 1, 0.36, 1);
+  filter: brightness(0.78) saturate(0.8);
+}
+
+.cella-velo {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--color-nero) 88%, transparent) 0%,
+    color-mix(in srgb, var(--color-nero) 35%, transparent) 38%,
+    transparent 70%
+  );
+  transition: opacity 500ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cella-etichetta {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  padding: 1.5rem;
+}
+
+@media (hover: hover) {
+  .cella-velo,
+  .cella-etichetta {
+    opacity: 0;
+    transition: opacity 450ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 450ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .cella-etichetta {
+    transform: translateY(8px);
+  }
+  .cella:hover .cella-immagine,
+  .cella:focus-visible .cella-immagine {
+    filter: none;
+    transform: scale(1.03);
+  }
+  .cella:hover .cella-velo,
+  .cella:focus-visible .cella-velo,
+  .cella:hover .cella-etichetta,
+  .cella:focus-visible .cella-etichetta {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (hover: none) {
+  .cella-immagine {
+    filter: brightness(0.86) saturate(0.9);
+  }
+}
+
+/* Sopra una fotografia il grigio dell'occhiello non regge: va alzato. */
+.cella-etichetta .occhiello {
+  color: color-mix(in srgb, var(--color-porcellana) 78%, transparent);
+}
+
+/* Testo secondario. Definito qui e non come classe Tailwind composta a
+   runtime: Tailwind legge il sorgente staticamente e una classe costruita
+   con una variabile non verrebbe mai generata. */
+.testo-tenue {
+  color: color-mix(in srgb, var(--color-porcellana) 64%, transparent);
+}
