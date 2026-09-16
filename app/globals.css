@@ -72,8 +72,10 @@
 
   /* ===============================================================
      INDICE — la prima schermata.
-     A riposo: solo i quattro nomi su nero. Al passaggio la cover
-     riempie lo sfondo e gli altri nomi si spengono.
+     Un solo meccanismo per tutti i dispositivi: il progetto attivo
+     porta la sua cover a tutto schermo. Cosa lo rende attivo cambia —
+     il cursore sul desktop, la posizione di scorrimento sul telefono —
+     ma lo stato arriva sempre da `data-attivo`, mai da `:hover`.
      =============================================================== */
 
   .indice-sfondo {
@@ -81,6 +83,30 @@
     inset: 0;
     z-index: 0;
     pointer-events: none;
+  }
+
+  /* A riposo: il nero non è vuoto. Un alone caldo, appena percettibile,
+     che si ritira quando entra una fotografia. */
+  .indice-alone {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 900ms var(--curva);
+    background:
+      radial-gradient(
+        62% 58% at 20% 64%,
+        color-mix(in srgb, var(--color-rosa) 13%, transparent) 0%,
+        transparent 72%
+      ),
+      radial-gradient(
+        52% 48% at 86% 18%,
+        color-mix(in srgb, var(--color-azzurro) 8%, transparent) 0%,
+        transparent 70%
+      );
+  }
+
+  .indice-alone[data-attivo="true"] {
+    opacity: 1;
   }
 
   .indice-strato {
@@ -110,6 +136,18 @@
     );
   }
 
+  /* La grana resta sempre, anche sopra le fotografie: è quella che tiene
+     insieme il nero vuoto e le immagini, invece di farli sembrare due
+     pagine diverse. */
+  .indice-grana {
+    position: absolute;
+    inset: 0;
+    opacity: 0.12;
+    mix-blend-mode: soft-light;
+    background-size: 160px 160px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  }
+
   .indice-nome {
     font-family: var(--font-display);
     font-weight: 600;
@@ -125,75 +163,71 @@
     transition: opacity 400ms var(--curva);
   }
 
-  @media (hover: hover) {
-    /* Quando il cursore è sulla lista, tutto si spegne tranne la voce
-       sotto il cursore. Il fuoco da tastiera fa esattamente lo stesso:
-       senza, l'indice sarebbe inutilizzabile senza mouse. */
-    .indice-lista:hover .indice-nome,
-    .indice-lista:focus-within .indice-nome {
-      color: color-mix(in srgb, var(--color-porcellana) 22%, transparent);
-    }
-
-    .indice-voce:hover .indice-nome,
-    .indice-voce:focus-visible .indice-nome {
-      color: var(--color-porcellana);
-    }
-
-    .indice-voce:hover .indice-meta,
-    .indice-voce:focus-visible .indice-meta {
-      opacity: 1;
-    }
+  /* Quando un progetto è attivo tutti gli altri nomi si spengono.
+     `:where()` azzera la specificità della regola di spegnimento, così la
+     regola dell'attivo la sopravanza senza doverla rincorrere. */
+  .indice-lista[data-attivo="true"] :where(.indice-nome) {
+    color: color-mix(in srgb, var(--color-porcellana) 22%, transparent);
   }
 
-  /* Senza hover l'indice diventa una pila di fasce, ognuna con la propria
-     immagine e il nome sempre visibile. Stesso oggetto, non un'altra pagina. */
+  .indice-lista li[data-attivo="true"] .indice-nome {
+    color: var(--color-porcellana);
+  }
+
+  .indice-lista li[data-attivo="true"] .indice-meta {
+    opacity: 1;
+  }
+
+  /* Senza cursore l'attivo lo decide lo scorrimento, quindi le voci devono
+     avere abbastanza aria da attraversare il centro dello schermo una alla
+     volta. Con quattro progetti la pagina scorre per circa due schermate. */
   @media (hover: none) {
-    .indice-sfondo {
-      display: none;
+    /* Aria in testa e in coda: senza quella in fondo l'ultimo progetto non
+       riesce mai a salire fino al centro dello schermo e resterebbe attivo
+       solo negli ultimissimi pixel; senza quella in testa il primo durerebbe
+       un soffio. Con entrambe ogni voce ha la sua fetta di scorrimento. */
+    .indice-lista {
+      padding-top: 12vh;
+      padding-bottom: 26vh;
     }
 
     .indice-voce {
-      position: relative;
-      isolation: isolate;
       display: flex;
+      min-height: 44vh;
       flex-direction: column;
-      justify-content: flex-end;
-      min-height: 38vh;
-      padding: 1.5rem;
-      overflow: hidden;
-      border-radius: 0.5rem;
-    }
-
-    .indice-fascia {
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-    }
-
-    .indice-fascia::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to top,
-        color-mix(in srgb, var(--color-nero) 82%, transparent),
-        color-mix(in srgb, var(--color-nero) 30%, transparent)
-      );
+      justify-content: center;
     }
 
     .indice-nome {
-      color: var(--color-porcellana);
-      font-size: clamp(2rem, 11vw, 3rem);
+      font-size: clamp(2.5rem, 13vw, 4rem);
     }
 
-    .indice-meta {
-      opacity: 1;
+    /* Su uno schermo stretto il velo orizzontale coprirebbe quasi tutto.
+       Qui scurisce la fascia centrale, perché è lì che il nome attivo si
+       trova sempre: è il centro dello schermo a decidere chi è attivo.
+       Sopra e sotto la foto resta libera. */
+    .indice-strato::after {
+      background: linear-gradient(
+        to bottom,
+        color-mix(in srgb, var(--color-nero) 56%, transparent) 0%,
+        color-mix(in srgb, var(--color-nero) 80%, transparent) 22%,
+        color-mix(in srgb, var(--color-nero) 80%, transparent) 72%,
+        color-mix(in srgb, var(--color-nero) 52%, transparent) 100%
+      );
+    }
+
+    /* I nomi spenti qui non sono decorazione: sono la navigazione, e si
+       leggono sopra una fotografia. Il 22% del desktop sparirebbe. */
+    .indice-lista[data-attivo="true"] :where(.indice-nome) {
+      color: color-mix(in srgb, var(--color-porcellana) 40%, transparent);
     }
   }
 
   @media (hover: hover) {
-    .indice-fascia {
-      display: none;
+    .indice-lista {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
     }
   }
 }
