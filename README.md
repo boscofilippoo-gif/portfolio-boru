@@ -30,14 +30,23 @@ reggere a piena pagina. Proporzione 4:3, larghezza 1600px, WebP.
 Su desktop la cover riempie lo schermo e i nomi stanno a sinistra: tieni
 il soggetto sulla destra, sotto la parte più chiara del velo.
 
-Su telefono la foto **non** viene ritagliata: una cover orizzontale che
-riempie uno schermo verticale ne mostrerebbe circa un terzo. Occupa tutta
-la larghezza, nella sua proporzione esatta — che su 375 px di larghezza
-significa 281 px di altezza, il massimo possibile senza tagliarla — e il
-resto dello schermo lo riempie la stessa foto sfocata e scura.
+Sul telefono serve una **seconda cover, verticale 9:16**: una 4:3 che
+riempie uno schermo verticale ne mostrerebbe circa un terzo. Mettila in
+`public/progetti/<slug>/cover-verticale.webp` e dichiarala come
+`coverVerticale` nel record. Una 9:16 occupa l'82% dell'altezza dello
+schermo; una 4:3 il 35%.
 
-Per questo la proporzione 4:3 non è un'indicazione ma un vincolo: una
-cover con proporzione diversa lì verrebbe ritagliata.
+Il campo è facoltativo: senza, quel progetto usa la 4:3 e il resto dello
+schermo viene riempito dalla stessa foto sfocata e scura. Nessuna delle
+due viene mai ritagliata.
+
+Per consegnare nuove verticali: mettile in `da-elaborare/` col nome dello
+slug (`.jpg`, `.png` o `.heic` vanno tutti bene) e lancia
+`node converti-verticali.mjs`. Ritaglio, ridimensionamento e conversione
+sono automatici.
+
+Il soggetto va nella fascia centrale: in cima passa il nome del progetto
+e in fondo l'invito a scorrere, e su entrambi gli estremi c'è un velo.
 
 ## Struttura
 

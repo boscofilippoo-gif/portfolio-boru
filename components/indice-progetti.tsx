@@ -82,15 +82,27 @@ export function IndiceProgetti() {
         <div className="indice-alone" data-attivo={attivo === null} />
 
         {progetti.map((p, i) => (
-          <div key={p.slug} className="indice-strato" data-attivo={attivo === p.slug}>
+          <div
+            key={p.slug}
+            className="indice-strato"
+            data-attivo={attivo === p.slug}
+            data-verticale={Boolean(p.coverVerticale)}
+          >
             {/* Riempimento: la stessa foto sfocata e scura, solo dove lo
                 schermo è verticale. Serve a togliere il nero morto intorno
                 alla fotografia senza toglierle un pixel. Viene chiesta a 64
                 pixel di larghezza: tanto è sfocata, e così pesa nulla. */}
             <span className="indice-riempimento">
-              <Image src={p.cover.src} alt="" fill sizes="64px" />
+              <Image
+                src={(p.coverVerticale ?? p.cover).src}
+                alt=""
+                fill
+                sizes="64px"
+              />
             </span>
 
+            {/* La 4:3: riempie lo schermo sul desktop, e sul telefono resta
+                solo per i progetti senza una verticale. */}
             <span className="indice-intera">
               <Image
                 src={p.cover.src}
@@ -100,6 +112,12 @@ export function IndiceProgetti() {
                 priority={i === 0}
               />
             </span>
+
+            {p.coverVerticale && (
+              <span className="indice-verticale">
+                <Image src={p.coverVerticale.src} alt="" fill sizes="100vw" />
+              </span>
+            )}
           </div>
         ))}
 

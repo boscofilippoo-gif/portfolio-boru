@@ -132,8 +132,10 @@
     inset: 0;
   }
 
-  /* Dove lo schermo è orizzontale come le foto il riempimento non serve. */
-  .indice-riempimento {
+  /* Dove lo schermo è orizzontale come le foto, il riempimento e la
+     versione verticale non servono. */
+  .indice-riempimento,
+  .indice-verticale {
     display: none;
   }
 
@@ -253,6 +255,24 @@
       transform: scale(1.18);
     }
 
+    /* Con una verticale disponibile la 4:3 sparisce: userebbe un terzo
+       dello schermo dove l'altra ne usa più di quattro quinti. */
+    .indice-strato[data-verticale="true"] .indice-intera {
+      display: none;
+    }
+
+    /* La verticale si vede per intero, come la 4:3: `contain` e non `cover`,
+       perché anche un 9:16 su uno schermo più stretto verrebbe ritagliato. */
+    .indice-verticale {
+      display: block;
+      position: absolute;
+      inset: 0;
+    }
+
+    .indice-verticale img {
+      object-fit: contain;
+    }
+
     .indice-intera {
       inset: 50% 0 auto 0;
       transform: translateY(-50%);
@@ -287,10 +307,28 @@
       );
     }
 
+    /* La verticale occupa quasi tutto lo schermo, quindi il nome ci finisce
+       sopra invece che sotto: il velo si sposta in cima, dove sta il nome,
+       e lascia libera la parte bassa della fotografia. */
+    .indice-strato[data-verticale="true"]::after {
+      background: linear-gradient(
+        to bottom,
+        color-mix(in srgb, var(--color-nero) 82%, transparent) 0%,
+        color-mix(in srgb, var(--color-nero) 62%, transparent) 22%,
+        color-mix(in srgb, var(--color-nero) 16%, transparent) 42%,
+        color-mix(in srgb, var(--color-nero) 16%, transparent) 62%,
+        color-mix(in srgb, var(--color-nero) 52%, transparent) 82%,
+        color-mix(in srgb, var(--color-nero) 74%, transparent) 100%
+      );
+    }
+
     /* I nomi spenti qui non sono decorazione: sono la navigazione, e si
        leggono sopra una fotografia. Il 22% del desktop sparirebbe. */
+    /* I nomi non attivi cadono in mezzo alla fotografia, che qui occupa
+       quasi tutto lo schermo: al 32% le competevano contro. Restano come
+       un accenno, quel tanto che basta a dire che c'è dell'altro sotto. */
     .indice-lista[data-attivo="true"] :where(.indice-nome) {
-      color: color-mix(in srgb, var(--color-porcellana) 32%, transparent);
+      color: color-mix(in srgb, var(--color-porcellana) 17%, transparent);
     }
   }
 

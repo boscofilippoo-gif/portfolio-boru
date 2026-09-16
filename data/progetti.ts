@@ -16,6 +16,9 @@ export type Progetto = {
   cosaAbbiamoFatto: string[];
   /** L'immagine dell'indice. È l'unica cosa che si vede in home. */
   cover: Immagine;
+  /** Versione verticale 9:16 per il telefono, dove una 4:3 riempirebbe
+   *  appena un terzo dello schermo. Se manca, il telefono usa la 4:3. */
+  coverVerticale?: Immagine;
   /** Una o due frasi, in apertura di scheda. */
   intro: string;
 
@@ -56,6 +59,10 @@ export const progetti: Progetto[] = [
     cover: {
       src: "/progetti/eddyline/cover.webp",
       alt: "Un gommone da rafting affronta una rapida sul fiume Sesia",
+    },
+    coverVerticale: {
+      src: "/progetti/eddyline/cover-verticale.webp",
+      alt: "Un gommone da rafting visto dall'alto mentre affronta le rapide del Sesia",
     },
     intro:
       "Una pagina che prima di raccontarti qualcosa ti chiede una cosa sola: rafting o canyoning. Da quella scelta si riscrive tutto il resto — prezzi, certificazioni, ordine delle chiamate all'azione.",
@@ -179,6 +186,10 @@ export const progetti: Progetto[] = [
     cover: {
       src: "/progetti/swapa/cover.webp",
       alt: "La microcar elettrica SWAPA ZIP fotografata in studio",
+    },
+    coverVerticale: {
+      src: "/progetti/swapa/cover-verticale.webp",
+      alt: "Una ragazza affacciata dal finestrino della microcar elettrica SWAPA",
     },
     intro:
       "Il team faceva tutto a mano: assegnare i contatti, richiamare, fissare gli appuntamenti, mandare le conferme, ricordarsi di chi non aveva risposto. Oggi dal contatto all'appuntamento confermato non tocca niente nessuno.",
@@ -311,6 +322,10 @@ export const progetti: Progetto[] = [
       src: "/progetti/konsulto/cover.webp",
       alt: "Fotogramma del webinar Konsulto: il relatore spiega una bolletta con i documenti aperti sul tavolo",
     },
+    coverVerticale: {
+      src: "/progetti/konsulto/cover-verticale.webp",
+      alt: "Ritratto fortemente sfocato del relatore del webinar Konsulto, su fondo viola",
+    },
     intro:
       "Dal contatto al commerciale senza che nessuno tocchi niente. Due percorsi paralleli che decidono da soli chi è pronto a parlare, osservando un gesto invece di fare domande.",
     contesto: {
@@ -436,6 +451,10 @@ export const progetti: Progetto[] = [
     cover: {
       src: "/progetti/miwa/cover.webp",
       alt: "Scatto editoriale della campagna MIWA, all'aperto sulle colline",
+    },
+    coverVerticale: {
+      src: "/progetti/miwa/cover-verticale.webp",
+      alt: "Scatto editoriale della campagna MIWA: una modella su una scalinata in pietra",
     },
     intro:
       "Costruire domanda qualificata prima che la piattaforma fosse online, e far capire subito che MIWA è riservata a chi ha una boutique.",

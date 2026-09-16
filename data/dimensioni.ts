@@ -1,5 +1,6 @@
 // Generato da genera-dimensioni.mjs — non modificare a mano.
 export const dimensioni: Record<string, [number, number]> = {
+  "/progetti/eddyline/cover-verticale.webp": [1080, 1920],
   "/progetti/eddyline/cover.webp": [1600, 1200],
   "/progetti/eddyline/foto-canyoning.jpg": [1420, 1065],
   "/progetti/eddyline/foto-rafting.jpg": [1420, 1065],
@@ -7,6 +8,7 @@ export const dimensioni: Record<string, [number, number]> = {
   "/progetti/eddyline/landing-canyoning.jpg": [2400, 1800],
   "/progetti/eddyline/landing-rafting.jpg": [2400, 1800],
   "/progetti/eddyline/split-decisioni.png": [2400, 1029],
+  "/progetti/konsulto/cover-verticale.webp": [1080, 1920],
   "/progetti/konsulto/cover.webp": [1600, 1200],
   "/progetti/konsulto/distribuzione.png": [2400, 1800],
   "/progetti/konsulto/funnel-paralleli.png": [2400, 1029],
@@ -15,10 +17,12 @@ export const dimensioni: Record<string, [number, number]> = {
   "/progetti/konsulto/landing-webinar.png": [2400, 1800],
   "/progetti/konsulto/qualificazione.png": [2400, 1800],
   "/progetti/konsulto/schema-integrazioni.png": [2400, 1050],
+  "/progetti/miwa/cover-verticale.webp": [1080, 1920],
   "/progetti/miwa/cover.webp": [1600, 1200],
   "/progetti/miwa/feed-instagram.jpg": [2400, 1800],
   "/progetti/miwa/hero-campagna.jpg": [2400, 1800],
   "/progetti/miwa/piattaforma.jpg": [2400, 1800],
+  "/progetti/swapa/cover-verticale.webp": [1080, 1920],
   "/progetti/swapa/cover.webp": [1600, 1200],
   "/progetti/swapa/email-benvenuto.png": [2400, 1800],
   "/progetti/swapa/hero.jpg": [2400, 1800],
