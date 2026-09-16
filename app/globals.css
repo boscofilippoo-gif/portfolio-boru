@@ -212,13 +212,13 @@
        fondo permette all'ultimo di arrivare alla linea che decide chi è
        attivo, altrimenti resterebbe acceso solo negli ultimi pixel. */
     .indice-lista {
-      padding-top: 55vh;
-      padding-bottom: 46vh;
+      padding-top: 52svh;
+      padding-bottom: 44svh;
     }
 
     .indice-voce {
       display: block;
-      min-height: 62vh;
+      min-height: 58svh;
     }
 
     /* Il nome si aggancia in alto per tutto il tempo in cui la sua
@@ -226,7 +226,7 @@
        scorrimento il progetto attivo sarebbe senza nome visibile. */
     .indice-testo {
       position: sticky;
-      top: 15vh;
+      top: 15svh;
     }
 
     .indice-nome {
@@ -280,7 +280,7 @@
       /* Col telefono in orizzontale una fascia 4:3 sarebbe più alta dello
          schermo: il tetto la contiene, e `contain` la rimpicciolisce invece
          di tagliarla — che è tutto il punto di questa schermata. */
-      max-height: 58vh;
+      max-height: 58svh;
     }
 
     .indice-intera img {
@@ -341,11 +341,15 @@
   }
 
   @media (hover: none) {
+    /* Fra l'inizio della pagina e il centro, sopra al primo titolo. In
+       fondo finiva addosso al nome: `vh` misura lo schermo senza la barra
+       degli indirizzi, quindi sul telefono vero il titolo scende più in
+       basso di quanto sembri. */
     .indice-invito {
       display: flex;
       position: fixed;
       z-index: 20;
-      bottom: 2.25rem;
+      top: 26svh;
       left: 0;
       right: 0;
       flex-direction: column;
