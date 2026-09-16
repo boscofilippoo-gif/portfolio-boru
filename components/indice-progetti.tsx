@@ -17,7 +17,23 @@ import { progetti } from "@/data/progetti";
  */
 export function IndiceProgetti() {
   const [attivo, setAttivo] = useState<string | null>(null);
+  const [haScorso, setHaScorso] = useState(false);
   const lista = useRef<HTMLUListElement>(null);
+
+  // L'invito a scorrere ha fatto il suo mestiere al primo scorrimento, e non
+  // torna più: legarlo alla comparsa della prima fotografia lo lasciava lì
+  // per tutta la schermata nera, anche quando era già chiaro cosa fare.
+  useEffect(() => {
+    if (haScorso) return;
+
+    const controlla = () => {
+      if (window.scrollY > 4) setHaScorso(true);
+    };
+
+    controlla(); // la pagina può aprirsi già scorsa, tornando indietro
+    window.addEventListener("scroll", controlla, { passive: true });
+    return () => window.removeEventListener("scroll", controlla);
+  }, [haScorso]);
 
   useEffect(() => {
     const senzaCursore = window.matchMedia("(hover: none)");
@@ -124,10 +140,10 @@ export function IndiceProgetti() {
         <div className="indice-grana" />
       </div>
 
-      {/* Solo sul telefono, e solo finché non è comparsa la prima fotografia:
-          con un nome solo a schermo non si capisce che scorrendo ce ne sono
-          altri. «Scorri» è la stessa parola che usa la home di borustudio.it. */}
-      <div className="indice-invito" data-visibile={attivo === null} aria-hidden>
+      {/* Solo sul telefono, e solo prima del primo scorrimento: con un nome
+          solo a schermo non si capisce che scorrendo ce ne sono altri.
+          «Scorri» è la stessa parola che usa la home di borustudio.it. */}
+      <div className="indice-invito" data-visibile={!haScorso} aria-hidden>
         <span className="occhiello">Scorri</span>
         <span className="indice-invito-linea" />
       </div>
