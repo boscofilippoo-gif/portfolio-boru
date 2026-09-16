@@ -106,6 +106,14 @@ export function IndiceProgetti() {
         <div className="indice-grana" />
       </div>
 
+      {/* Solo sul telefono, e solo finché non è comparsa la prima fotografia:
+          con un nome solo a schermo non si capisce che scorrendo ce ne sono
+          altri. «Scorri» è la stessa parola che usa la home di borustudio.it. */}
+      <div className="indice-invito" data-visibile={attivo === null} aria-hidden>
+        <span className="occhiello">Scorri</span>
+        <span className="indice-invito-linea" />
+      </div>
+
       <ul
         ref={lista}
         className="indice-lista relative z-10 w-full"
