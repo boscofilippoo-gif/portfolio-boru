@@ -30,11 +30,14 @@ reggere a piena pagina. Proporzione 4:3, larghezza 1600px, WebP.
 Su desktop la cover riempie lo schermo e i nomi stanno a sinistra: tieni
 il soggetto sulla destra, sotto la parte più chiara del velo.
 
-Su telefono la foto **non** riempie lo schermo: una cover orizzontale su
-uno schermo verticale ne mostrerebbe circa un terzo. Occupa invece tutta
-la larghezza in alto, nella sua proporzione esatta, quindi si vede per
-intero. Per questo la proporzione 4:3 non è un'indicazione ma un vincolo:
-una cover con proporzione diversa lì verrebbe ritagliata.
+Su telefono la foto **non** viene ritagliata: una cover orizzontale che
+riempie uno schermo verticale ne mostrerebbe circa un terzo. Occupa tutta
+la larghezza, nella sua proporzione esatta — che su 375 px di larghezza
+significa 281 px di altezza, il massimo possibile senza tagliarla — e il
+resto dello schermo lo riempie la stessa foto sfocata e scura.
+
+Per questo la proporzione 4:3 non è un'indicazione ma un vincolo: una
+cover con proporzione diversa lì verrebbe ritagliata.
 
 ## Struttura
 

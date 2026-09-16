@@ -127,6 +127,16 @@
     object-fit: cover;
   }
 
+  .indice-intera {
+    position: absolute;
+    inset: 0;
+  }
+
+  /* Dove lo schermo è orizzontale come le foto il riempimento non serve. */
+  .indice-riempimento {
+    display: none;
+  }
+
   /* Il velo tiene i nomi leggibili sopra qualunque fotografia.
      È un gradiente e non un velo piatto: i nomi stanno a sinistra, e su
      una foto chiara e molto dettagliata — le rapide di Eddyline — un velo
@@ -211,36 +221,54 @@
       font-size: clamp(2.5rem, 13vw, 4rem);
     }
 
-    /* Qui la foto non riempie lo schermo: lo riempirebbe mostrandone circa
-       un terzo, perché le cover sono orizzontali e lo schermo è verticale.
-       Occupa invece tutta la larghezza nella parte alta, nella sua
-       proporzione esatta, quindi si vede per intero. I nomi scorrono sotto,
-       sul nero. */
-    .indice-strato {
-      inset: 0 0 auto 0;
+    /* Su uno schermo verticale una cover orizzontale può essere alta al
+       massimo tre quarti della larghezza dello schermo: più grande di così
+       non esiste senza tagliarla. Quindi la fotografia resta intera e a
+       quella misura, e il vuoto intorno lo riempie la stessa foto sfocata,
+       che non è un ripiego grafico ma l'unico modo di avere lo schermo
+       pieno e la foto integra insieme. */
+    .indice-riempimento {
+      display: block;
+      position: absolute;
+      inset: 0;
+    }
+
+    .indice-riempimento img {
+      object-fit: cover;
+      filter: blur(30px) saturate(0.7) brightness(0.55);
+      /* Ingrandita: senza, la sfocatura scoprirebbe i bordi del riquadro. */
+      transform: scale(1.18);
+    }
+
+    .indice-intera {
+      inset: 7vh 0 auto 0;
       aspect-ratio: 4 / 3;
       /* Col telefono in orizzontale una fascia 4:3 sarebbe più alta dello
-         schermo: il tetto la contiene, e `contain` fa rimpicciolire la foto
-         invece di tagliarla — che è tutto il punto di questa schermata. */
+         schermo: il tetto la contiene, e `contain` la rimpicciolisce invece
+         di tagliarla — che è tutto il punto di questa schermata. */
       max-height: 58vh;
     }
 
-    .indice-strato img {
+    .indice-intera img {
       object-fit: contain;
-      object-position: top;
+      /* Senza, il punto in cui la foto nitida finisce e comincia la sfocatura
+         sembra una cucitura. Con l'ombra diventa una lastra appoggiata. */
+      box-shadow: 0 26px 60px -18px color-mix(in srgb, #000 70%, transparent);
     }
 
     /* Scurisce in cima, dove stanno logo e occhiello, e sfuma nel nero in
        basso: senza, la foto finirebbe con un bordo netto a metà schermo. */
+    /* Scurisce in cima, dove stanno logo e occhiello, lascia libera la
+       fascia della fotografia, e torna scuro in basso, dove scorrono i nomi. */
     .indice-strato::after {
       background: linear-gradient(
         to bottom,
-        color-mix(in srgb, var(--color-nero) 76%, transparent) 0%,
-        color-mix(in srgb, var(--color-nero) 22%, transparent) 22%,
-        color-mix(in srgb, var(--color-nero) 10%, transparent) 40%,
-        color-mix(in srgb, var(--color-nero) 48%, transparent) 64%,
-        color-mix(in srgb, var(--color-nero) 82%, transparent) 84%,
-        var(--color-nero) 100%
+        color-mix(in srgb, var(--color-nero) 70%, transparent) 0%,
+        color-mix(in srgb, var(--color-nero) 20%, transparent) 9%,
+        transparent 40%,
+        color-mix(in srgb, var(--color-nero) 26%, transparent) 58%,
+        color-mix(in srgb, var(--color-nero) 44%, transparent) 78%,
+        color-mix(in srgb, var(--color-nero) 52%, transparent) 100%
       );
     }
 

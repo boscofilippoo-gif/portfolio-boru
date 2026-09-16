@@ -85,13 +85,23 @@ export function IndiceProgetti() {
 
         {progetti.map((p, i) => (
           <div key={p.slug} className="indice-strato" data-attivo={attivo === p.slug}>
-            <Image
-              src={p.cover.src}
-              alt=""
-              fill
-              sizes="100vw"
-              priority={i === 0}
-            />
+            {/* Riempimento: la stessa foto sfocata e scura, solo dove lo
+                schermo è verticale. Serve a togliere il nero morto intorno
+                alla fotografia senza toglierle un pixel. Viene chiesta a 64
+                pixel di larghezza: tanto è sfocata, e così pesa nulla. */}
+            <span className="indice-riempimento">
+              <Image src={p.cover.src} alt="" fill sizes="64px" />
+            </span>
+
+            <span className="indice-intera">
+              <Image
+                src={p.cover.src}
+                alt=""
+                fill
+                sizes="100vw"
+                priority={i === 0}
+              />
+            </span>
           </div>
         ))}
 
