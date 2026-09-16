@@ -16,43 +16,186 @@
 
 :root {
   color-scheme: dark;
+  --curva: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-html {
-  scroll-behavior: smooth;
-  background-color: var(--color-nero);
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--color-nero);
+  }
+
+  body {
+    background-color: var(--color-nero);
+    color: var(--color-porcellana);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  ::selection {
+    background-color: color-mix(in srgb, var(--color-azzurro) 85%, transparent);
+    color: var(--color-nero);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-azzurro);
+    outline-offset: 3px;
+  }
 }
 
-body {
-  background-color: var(--color-nero);
-  color: var(--color-porcellana);
-  font-family: var(--font-sans);
-  -webkit-font-smoothing: antialiased;
-}
+/* Le classi di componente stanno nel layer `components` apposta: le
+   utility di Tailwind vengono dopo e devono poterle sovrascrivere.
+   Fuori dai layer vincerebbero loro, e un `text-azzurro` accanto a
+   `occhiello` non avrebbe nessun effetto. */
+@layer components {
+  /* Occhiello: la microtipografia ricorrente del marchio.
+     Il 55% non è estetico ma di leggibilità: a 10px serve almeno 4.5:1
+     sul nero, e al 45% si sta esattamente sul limite. */
+  .occhiello {
+    font-size: 0.625rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--color-porcellana) 55%, transparent);
+  }
 
-h1, h2, h3 {
-  font-family: var(--font-display);
-  letter-spacing: -0.02em;
-}
+  /* Testo secondario. Definito qui e non come classe Tailwind composta a
+     runtime: Tailwind legge il sorgente staticamente e una classe costruita
+     con una variabile non verrebbe mai generata. */
+  .testo-tenue {
+    color: color-mix(in srgb, var(--color-porcellana) 64%, transparent);
+  }
 
-/* Occhiello: la microtipografia ricorrente del marchio.
-   Il 55% non è estetico ma di leggibilità: a 10px serve almeno 4.5:1
-   sul nero, e al 45% si sta esattamente sul limite. */
-.occhiello {
-  font-size: 0.625rem;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: color-mix(in srgb, var(--color-porcellana) 55%, transparent);
-}
+  /* ===============================================================
+     INDICE — la prima schermata.
+     A riposo: solo i quattro nomi su nero. Al passaggio la cover
+     riempie lo sfondo e gli altri nomi si spengono.
+     =============================================================== */
 
-::selection {
-  background-color: color-mix(in srgb, var(--color-azzurro) 85%, transparent);
-  color: var(--color-nero);
-}
+  .indice-sfondo {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
 
-:focus-visible {
-  outline: 2px solid var(--color-azzurro);
-  outline-offset: 3px;
+  .indice-strato {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 600ms var(--curva);
+  }
+
+  .indice-strato[data-attivo="true"] {
+    opacity: 1;
+  }
+
+  /* Il velo tiene i nomi leggibili sopra qualunque fotografia.
+     È un gradiente e non un velo piatto: i nomi stanno a sinistra, e su
+     una foto chiara e molto dettagliata — le rapide di Eddyline — un velo
+     uniforme non basterebbe. A destra resta trasparente e la foto respira. */
+  .indice-strato::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      color-mix(in srgb, var(--color-nero) 84%, transparent) 0%,
+      color-mix(in srgb, var(--color-nero) 66%, transparent) 45%,
+      color-mix(in srgb, var(--color-nero) 42%, transparent) 100%
+    );
+  }
+
+  .indice-nome {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(2.75rem, 8vw, 7rem);
+    line-height: 1.04;
+    letter-spacing: -0.03em;
+    color: color-mix(in srgb, var(--color-porcellana) 64%, transparent);
+    transition: color 400ms var(--curva);
+  }
+
+  .indice-meta {
+    opacity: 0;
+    transition: opacity 400ms var(--curva);
+  }
+
+  @media (hover: hover) {
+    /* Quando il cursore è sulla lista, tutto si spegne tranne la voce
+       sotto il cursore. Il fuoco da tastiera fa esattamente lo stesso:
+       senza, l'indice sarebbe inutilizzabile senza mouse. */
+    .indice-lista:hover .indice-nome,
+    .indice-lista:focus-within .indice-nome {
+      color: color-mix(in srgb, var(--color-porcellana) 22%, transparent);
+    }
+
+    .indice-voce:hover .indice-nome,
+    .indice-voce:focus-visible .indice-nome {
+      color: var(--color-porcellana);
+    }
+
+    .indice-voce:hover .indice-meta,
+    .indice-voce:focus-visible .indice-meta {
+      opacity: 1;
+    }
+  }
+
+  /* Senza hover l'indice diventa una pila di fasce, ognuna con la propria
+     immagine e il nome sempre visibile. Stesso oggetto, non un'altra pagina. */
+  @media (hover: none) {
+    .indice-sfondo {
+      display: none;
+    }
+
+    .indice-voce {
+      position: relative;
+      isolation: isolate;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-height: 38vh;
+      padding: 1.5rem;
+      overflow: hidden;
+      border-radius: 0.5rem;
+    }
+
+    .indice-fascia {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+    }
+
+    .indice-fascia::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        color-mix(in srgb, var(--color-nero) 82%, transparent),
+        color-mix(in srgb, var(--color-nero) 30%, transparent)
+      );
+    }
+
+    .indice-nome {
+      color: var(--color-porcellana);
+      font-size: clamp(2rem, 11vw, 3rem);
+    }
+
+    .indice-meta {
+      opacity: 1;
+    }
+  }
+
+  @media (hover: hover) {
+    .indice-fascia {
+      display: none;
+    }
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -61,84 +204,4 @@ h1, h2, h3 {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-}
-
-/* ---------------------------------------------------------------
-   Griglia dei lavori.
-   A riposo si vede solo l'immagine. Il nome compare all'hover —
-   ma dove l'hover non esiste (touch) resta sempre leggibile,
-   altrimenti la griglia non direbbe niente a nessuno.
-   --------------------------------------------------------------- */
-.cella {
-  position: relative;
-  display: block;
-  overflow: hidden;
-  background-color: color-mix(in srgb, var(--color-porcellana) 5%, transparent);
-}
-
-.cella-immagine {
-  transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1),
-    filter 500ms cubic-bezier(0.22, 1, 0.36, 1);
-  filter: brightness(0.78) saturate(0.8);
-}
-
-.cella-velo {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    color-mix(in srgb, var(--color-nero) 88%, transparent) 0%,
-    color-mix(in srgb, var(--color-nero) 35%, transparent) 38%,
-    transparent 70%
-  );
-  transition: opacity 500ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.cella-etichetta {
-  position: absolute;
-  inset-inline: 0;
-  bottom: 0;
-  padding: 1.5rem;
-}
-
-@media (hover: hover) {
-  .cella-velo,
-  .cella-etichetta {
-    opacity: 0;
-    transition: opacity 450ms cubic-bezier(0.22, 1, 0.36, 1),
-      transform 450ms cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  .cella-etichetta {
-    transform: translateY(8px);
-  }
-  .cella:hover .cella-immagine,
-  .cella:focus-visible .cella-immagine {
-    filter: none;
-    transform: scale(1.03);
-  }
-  .cella:hover .cella-velo,
-  .cella:focus-visible .cella-velo,
-  .cella:hover .cella-etichetta,
-  .cella:focus-visible .cella-etichetta {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@media (hover: none) {
-  .cella-immagine {
-    filter: brightness(0.86) saturate(0.9);
-  }
-}
-
-/* Sopra una fotografia il grigio dell'occhiello non regge: va alzato. */
-.cella-etichetta .occhiello {
-  color: color-mix(in srgb, var(--color-porcellana) 78%, transparent);
-}
-
-/* Testo secondario. Definito qui e non come classe Tailwind composta a
-   runtime: Tailwind legge il sorgente staticamente e una classe costruita
-   con una variabile non verrebbe mai generata. */
-.testo-tenue {
-  color: color-mix(in srgb, var(--color-porcellana) 64%, transparent);
 }

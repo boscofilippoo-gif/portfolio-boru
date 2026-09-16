@@ -23,19 +23,29 @@ npm run dev
    ```
 3. Aggiungi il record in `data/progetti.ts`.
 
-La cover è l'unica cosa che si vede in home: va scelta per prima.
-Proporzione 4:3, larghezza 1600px, WebP.
+La cover è l'unica cosa che si vede in home — riempie lo schermo intero
+quando si passa sul nome del progetto — quindi va scelta per prima e deve
+reggere a piena pagina. Proporzione 4:3, larghezza 1600px, WebP.
+
+Il soggetto va tenuto sulla destra: i nomi stanno a sinistra, sotto la
+parte più scura del velo.
 
 ## Struttura
 
 - `data/progetti.ts` — l'unica fonte dei contenuti
 - `data/dimensioni.ts` — generato, non modificare a mano
-- `components/griglia-progetti.tsx` — la griglia in home
+- `components/indice-progetti.tsx` — l'indice in home
+- `components/scheda/` — una sezione della scheda per file
 - `components/scheda-progetto.tsx` — la pagina del singolo progetto
-- `app/globals.css` — token di marca e comportamento della griglia
+- `app/globals.css` — token di marca e comportamento dell'indice.
+  Le classi stanno in `@layer components`: fuori dai layer vincerebbero
+  sulle utility di Tailwind, e un `text-azzurro` accanto a `occhiello`
+  non avrebbe nessun effetto.
 
 ## Note
 
-Il trattamento grafico delle cover (smorzatura a riposo, velo, comparsa
-del nome) è in CSS, non inciso nei file: si cambia idea senza rifare
-le immagini.
+Il trattamento grafico delle cover (velo a gradiente, comparsa del nome)
+è in CSS, non inciso nei file: si cambia idea senza rifare le immagini.
+
+Le schede non hanno metriche: è una scelta, non una dimenticanza. Il campo
+`metriche` è già nel tipo per quando serviranno.

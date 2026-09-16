@@ -2,6 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Progetto } from "@/data/progetti";
 import { misura } from "@/data/dimensioni";
+import { Contesto } from "@/components/scheda/contesto";
+import { Decisione } from "@/components/scheda/decisione";
+import { Passaggi } from "@/components/scheda/passaggi";
+import { Strumenti } from "@/components/scheda/strumenti";
 import { Galleria } from "@/components/galleria";
 import { ProssimoProgetto } from "@/components/prossimo-progetto";
 
@@ -25,9 +29,7 @@ export function SchedaProgetto({
 
       <header className="mt-14 md:mt-20">
         <h1 className="text-4xl font-semibold md:text-6xl">{progetto.nome}</h1>
-        <p className="testo-tenue mt-3 text-xl md:text-2xl">
-          {progetto.sottotitolo}
-        </p>
+        <p className="testo-tenue mt-3 text-xl md:text-2xl">{progetto.sottotitolo}</p>
 
         <dl className="mt-10 flex flex-wrap gap-x-10 gap-y-5">
           <div>
@@ -40,9 +42,7 @@ export function SchedaProgetto({
           </div>
           <div>
             <dt className="occhiello">Cosa abbiamo fatto</dt>
-            <dd className="mt-1.5 text-sm">
-              {progetto.cosaAbbiamoFatto.join(" · ")}
-            </dd>
+            <dd className="mt-1.5 text-sm">{progetto.cosaAbbiamoFatto.join(" · ")}</dd>
           </div>
           {progetto.sito && (
             <div>
@@ -78,18 +78,18 @@ export function SchedaProgetto({
         />
       </div>
 
-      <div className="mt-28 space-y-20 md:mt-40 md:space-y-28">
-        {progetto.storia.map((blocco) => (
-          <section
-            key={blocco.titolo}
-            className="grid gap-4 md:grid-cols-[180px_1fr] md:gap-10"
-          >
-            <h2 className="occhiello pt-2">{blocco.titolo}</h2>
-            <p className="testo-tenue max-w-[62ch] text-[17px] leading-[1.75]">
-              {blocco.testo}
-            </p>
-          </section>
-        ))}
+      <div className="mt-28 space-y-28 md:mt-40 md:space-y-36">
+        <Contesto contesto={progetto.contesto} />
+        <Decisione decisione={progetto.decisione} />
+        <Passaggi passaggi={progetto.passaggi} />
+        <Strumenti strumenti={progetto.strumenti} />
+
+        <section className="grid gap-5 md:grid-cols-[180px_1fr] md:gap-10">
+          <h2 className="occhiello pt-2">Come funziona adesso</h2>
+          <p className="max-w-[62ch] text-[17px] leading-[1.75]">
+            {progetto.comeFunzionaAdesso}
+          </p>
+        </section>
       </div>
 
       <Galleria immagini={progetto.galleria} />
