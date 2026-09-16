@@ -33,24 +33,22 @@ export function IndiceProgetti() {
       inAttesa = 0;
       if (!senzaCursore.matches || !lista.current) return;
 
-      // Dove non c'è cursore la foto sta in alto, quindi la linea che decide
-      // chi è attivo scende: il nome acceso deve finire sotto la fotografia,
-      // non sopra.
-      const centro =
-        window.innerHeight * (senzaCursore.matches ? 0.72 : 0.5);
-      let vicino: string | null = null;
-      let minimo = Infinity;
+      // È attivo il progetto che contiene la linea di riferimento. Con le
+      // voci contigue ne esiste sempre esattamente uno — o nessuno, prima
+      // della prima voce: è la schermata nera d'apertura, e viene da sé
+      // senza bisogno di una soglia inventata.
+      const linea = window.innerHeight * 0.26;
+      let corrente: string | null = null;
 
       for (const voce of lista.current.children) {
         const r = voce.getBoundingClientRect();
-        const distanza = Math.abs(r.top + r.height / 2 - centro);
-        if (distanza < minimo) {
-          minimo = distanza;
-          vicino = (voce as HTMLElement).dataset.slug ?? null;
+        if (r.top <= linea && r.bottom > linea) {
+          corrente = (voce as HTMLElement).dataset.slug ?? null;
+          break;
         }
       }
 
-      setAttivo(vicino);
+      setAttivo(corrente);
     };
 
     const programma = () => {
@@ -123,9 +121,11 @@ export function IndiceProgetti() {
               onFocus={() => setAttivo(p.slug)}
               onBlur={() => setAttivo(null)}
             >
-              <span className="indice-nome block">{p.nome}</span>
-              <span className="indice-meta occhiello mt-2 block md:mt-1">
-                {p.settore} · {p.anno}
+              <span className="indice-testo block">
+                <span className="indice-nome block">{p.nome}</span>
+                <span className="indice-meta occhiello mt-2 block md:mt-1">
+                  {p.settore} · {p.anno}
+                </span>
               </span>
             </Link>
           </li>

@@ -199,22 +199,26 @@
      avere abbastanza aria da attraversare il centro dello schermo una alla
      volta. Con quattro progetti la pagina scorre per circa due schermate. */
   @media (hover: none) {
-    /* L'aria in testa tiene il primo nome sotto la fotografia invece che
-       sopra; quella in fondo permette all'ultimo di arrivare alla linea che
-       decide chi è attivo, altrimenti resterebbe acceso solo negli ultimi
-       pixel di scorrimento. */
+    /* L'aria in testa è la schermata nera d'apertura: il primo nome parte
+       in mezzo allo schermo e deve risalire prima di accendersi. Quella in
+       fondo permette all'ultimo di arrivare alla linea che decide chi è
+       attivo, altrimenti resterebbe acceso solo negli ultimi pixel. */
     .indice-lista {
-      padding-top: 46vh;
-      padding-bottom: 30vh;
+      padding-top: 55vh;
+      padding-bottom: 46vh;
     }
 
-    /* 36vh e non di più: è la distanza che tiene il nome precedente appena
-       sotto la fotografia invece che sopra, dove diventerebbe illeggibile. */
     .indice-voce {
-      display: flex;
-      min-height: 36vh;
-      flex-direction: column;
-      justify-content: center;
+      display: block;
+      min-height: 62vh;
+    }
+
+    /* Il nome si aggancia in alto per tutto il tempo in cui la sua
+       fotografia è a schermo. Senza, salirebbe oltre il bordo e a metà
+       scorrimento il progetto attivo sarebbe senza nome visibile. */
+    .indice-testo {
+      position: sticky;
+      top: 15vh;
     }
 
     .indice-nome {
@@ -241,7 +245,8 @@
     }
 
     .indice-intera {
-      inset: 7vh 0 auto 0;
+      inset: 50% 0 auto 0;
+      transform: translateY(-50%);
       aspect-ratio: 4 / 3;
       /* Col telefono in orizzontale una fascia 4:3 sarebbe più alta dello
          schermo: il tetto la contiene, e `contain` la rimpicciolisce invece
@@ -258,17 +263,18 @@
 
     /* Scurisce in cima, dove stanno logo e occhiello, e sfuma nel nero in
        basso: senza, la foto finirebbe con un bordo netto a metà schermo. */
-    /* Scurisce in cima, dove stanno logo e occhiello, lascia libera la
-       fascia della fotografia, e torna scuro in basso, dove scorrono i nomi. */
+    /* Scuro sopra, dove stanno il logo e il nome attivo; libero nella
+       fascia centrale della fotografia; di nuovo scuro sotto, dove passa
+       il nome del progetto successivo. */
     .indice-strato::after {
       background: linear-gradient(
         to bottom,
-        color-mix(in srgb, var(--color-nero) 70%, transparent) 0%,
-        color-mix(in srgb, var(--color-nero) 20%, transparent) 9%,
-        transparent 40%,
-        color-mix(in srgb, var(--color-nero) 26%, transparent) 58%,
-        color-mix(in srgb, var(--color-nero) 44%, transparent) 78%,
-        color-mix(in srgb, var(--color-nero) 52%, transparent) 100%
+        color-mix(in srgb, var(--color-nero) 72%, transparent) 0%,
+        color-mix(in srgb, var(--color-nero) 62%, transparent) 25%,
+        color-mix(in srgb, var(--color-nero) 14%, transparent) 34%,
+        color-mix(in srgb, var(--color-nero) 14%, transparent) 66%,
+        color-mix(in srgb, var(--color-nero) 58%, transparent) 78%,
+        color-mix(in srgb, var(--color-nero) 70%, transparent) 100%
       );
     }
 
