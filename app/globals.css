@@ -120,6 +120,13 @@
     opacity: 1;
   }
 
+  /* L'adattamento sta qui e non fra le utility di Tailwind: il layer
+     `utilities` viene dopo `components`, e i layer battono la specificità,
+     quindi da una media query non si riuscirebbe a sovrascriverlo. */
+  .indice-strato img {
+    object-fit: cover;
+  }
+
   /* Il velo tiene i nomi leggibili sopra qualunque fotografia.
      È un gradiente e non un velo piatto: i nomi stanno a sinistra, e su
      una foto chiara e molto dettagliata — le rapide di Eddyline — un velo
@@ -182,18 +189,20 @@
      avere abbastanza aria da attraversare il centro dello schermo una alla
      volta. Con quattro progetti la pagina scorre per circa due schermate. */
   @media (hover: none) {
-    /* Aria in testa e in coda: senza quella in fondo l'ultimo progetto non
-       riesce mai a salire fino al centro dello schermo e resterebbe attivo
-       solo negli ultimissimi pixel; senza quella in testa il primo durerebbe
-       un soffio. Con entrambe ogni voce ha la sua fetta di scorrimento. */
+    /* L'aria in testa tiene il primo nome sotto la fotografia invece che
+       sopra; quella in fondo permette all'ultimo di arrivare alla linea che
+       decide chi è attivo, altrimenti resterebbe acceso solo negli ultimi
+       pixel di scorrimento. */
     .indice-lista {
-      padding-top: 12vh;
-      padding-bottom: 26vh;
+      padding-top: 46vh;
+      padding-bottom: 30vh;
     }
 
+    /* 36vh e non di più: è la distanza che tiene il nome precedente appena
+       sotto la fotografia invece che sopra, dove diventerebbe illeggibile. */
     .indice-voce {
       display: flex;
-      min-height: 44vh;
+      min-height: 36vh;
       flex-direction: column;
       justify-content: center;
     }
@@ -202,24 +211,43 @@
       font-size: clamp(2.5rem, 13vw, 4rem);
     }
 
-    /* Su uno schermo stretto il velo orizzontale coprirebbe quasi tutto.
-       Qui scurisce la fascia centrale, perché è lì che il nome attivo si
-       trova sempre: è il centro dello schermo a decidere chi è attivo.
-       Sopra e sotto la foto resta libera. */
+    /* Qui la foto non riempie lo schermo: lo riempirebbe mostrandone circa
+       un terzo, perché le cover sono orizzontali e lo schermo è verticale.
+       Occupa invece tutta la larghezza nella parte alta, nella sua
+       proporzione esatta, quindi si vede per intero. I nomi scorrono sotto,
+       sul nero. */
+    .indice-strato {
+      inset: 0 0 auto 0;
+      aspect-ratio: 4 / 3;
+      /* Col telefono in orizzontale una fascia 4:3 sarebbe più alta dello
+         schermo: il tetto la contiene, e `contain` fa rimpicciolire la foto
+         invece di tagliarla — che è tutto il punto di questa schermata. */
+      max-height: 58vh;
+    }
+
+    .indice-strato img {
+      object-fit: contain;
+      object-position: top;
+    }
+
+    /* Scurisce in cima, dove stanno logo e occhiello, e sfuma nel nero in
+       basso: senza, la foto finirebbe con un bordo netto a metà schermo. */
     .indice-strato::after {
       background: linear-gradient(
         to bottom,
-        color-mix(in srgb, var(--color-nero) 56%, transparent) 0%,
-        color-mix(in srgb, var(--color-nero) 80%, transparent) 22%,
-        color-mix(in srgb, var(--color-nero) 80%, transparent) 72%,
-        color-mix(in srgb, var(--color-nero) 52%, transparent) 100%
+        color-mix(in srgb, var(--color-nero) 76%, transparent) 0%,
+        color-mix(in srgb, var(--color-nero) 22%, transparent) 22%,
+        color-mix(in srgb, var(--color-nero) 10%, transparent) 40%,
+        color-mix(in srgb, var(--color-nero) 48%, transparent) 64%,
+        color-mix(in srgb, var(--color-nero) 82%, transparent) 84%,
+        var(--color-nero) 100%
       );
     }
 
     /* I nomi spenti qui non sono decorazione: sono la navigazione, e si
        leggono sopra una fotografia. Il 22% del desktop sparirebbe. */
     .indice-lista[data-attivo="true"] :where(.indice-nome) {
-      color: color-mix(in srgb, var(--color-porcellana) 40%, transparent);
+      color: color-mix(in srgb, var(--color-porcellana) 32%, transparent);
     }
   }
 

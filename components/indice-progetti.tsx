@@ -23,8 +23,8 @@ export function IndiceProgetti() {
     const senzaCursore = window.matchMedia("(hover: none)");
     let inAttesa = 0;
 
-    // È attivo il progetto il cui centro è più vicino al centro dello
-    // schermo. Un IntersectionObserver con margini -50%/-50% sembrerebbe
+    // È attivo il progetto il cui centro è più vicino a una linea di
+    // riferimento dello schermo. Un IntersectionObserver con margini -50%/-50% sembrerebbe
     // più elegante, ma riduce la radice a un'altezza di zero pixel: con
     // area nulla l'intersezione non è affidabile e qualche progetto non
     // si attivava mai. Questo calcolo è banale su quattro voci e non
@@ -33,7 +33,11 @@ export function IndiceProgetti() {
       inAttesa = 0;
       if (!senzaCursore.matches || !lista.current) return;
 
-      const centro = window.innerHeight / 2;
+      // Dove non c'è cursore la foto sta in alto, quindi la linea che decide
+      // chi è attivo scende: il nome acceso deve finire sotto la fotografia,
+      // non sopra.
+      const centro =
+        window.innerHeight * (senzaCursore.matches ? 0.72 : 0.5);
       let vicino: string | null = null;
       let minimo = Infinity;
 
@@ -86,7 +90,6 @@ export function IndiceProgetti() {
               alt=""
               fill
               sizes="100vw"
-              className="object-cover"
               priority={i === 0}
             />
           </div>

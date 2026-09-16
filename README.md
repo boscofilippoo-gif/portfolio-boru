@@ -27,8 +27,14 @@ La cover è l'unica cosa che si vede in home — riempie lo schermo intero
 quando si passa sul nome del progetto — quindi va scelta per prima e deve
 reggere a piena pagina. Proporzione 4:3, larghezza 1600px, WebP.
 
-Il soggetto va tenuto sulla destra: i nomi stanno a sinistra, sotto la
-parte più scura del velo.
+Su desktop la cover riempie lo schermo e i nomi stanno a sinistra: tieni
+il soggetto sulla destra, sotto la parte più chiara del velo.
+
+Su telefono la foto **non** riempie lo schermo: una cover orizzontale su
+uno schermo verticale ne mostrerebbe circa un terzo. Occupa invece tutta
+la larghezza in alto, nella sua proporzione esatta, quindi si vede per
+intero. Per questo la proporzione 4:3 non è un'indicazione ma un vincolo:
+una cover con proporzione diversa lì verrebbe ritagliata.
 
 ## Struttura
 
