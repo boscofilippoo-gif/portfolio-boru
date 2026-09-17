@@ -193,7 +193,7 @@ export const progetti: Progetto[] = [
       {
         titolo: "Rimettere a fuoco l'acquisizione",
         sottotitolo:
-          "Fermare la spesa finché i numeri su cui si decide non sono affidabili.",
+          "Fermare la spesa finché i numeri non sono affidabili, poi ripartire su tutta la gamma.",
 
         contesto: {
           testo:
@@ -231,7 +231,7 @@ export const progetti: Progetto[] = [
           {
             titolo: "Gli eventi mandati dal server",
             testo:
-              "Le conversioni smettono di dipendere solo dal browser, dove impostazioni di sistema e blocchi ne fanno sparire una parte. Ogni evento parte anche dal server, con un identificativo che permette di riconoscerlo e non contarlo due volte.",
+              "Le conversioni smettono di dipendere solo dal browser, dove impostazioni di sistema e blocchi ne fanno sparire una parte. Ogni evento parte anche dal server, con un identificativo che permette di riconoscerlo e non contarlo due volte. Un componente attivo da anni mandava gli stessi eventi in parallelo: si spegne, ma solo dopo aver verificato che il canale nuovo li copra tutti.",
           },
           {
             titolo: "Il consenso come unico interruttore",
@@ -239,14 +239,19 @@ export const progetti: Progetto[] = [
               "Tutto ciò che va verso la piattaforma pubblicitaria passa da una sola condizione: il consenso dato dalla persona. Prima la regola era distribuita in più punti e non era verificabile in un colpo solo.",
           },
           {
-            titolo: "Lo spegnimento del vecchio passaggio",
+            titolo: "Una campagna per programma",
             testo:
-              "Un componente attivo da anni continuava a mandare gli stessi eventi in parallelo. Va spento, ma solo dopo aver verificato che il canale nuovo li copra tutti: nel frattempo si accetta un periodo di doppio invio.",
+              "Niente più comunicazione unica per un pubblico che non è uno solo: ogni programma ha la sua campagna e la sua pagina, così chi cerca un allenamento per la menopausa non vede lo stesso annuncio di chi cerca alta intensità. Dentro ciascuna, i gruppi di inserzione lavorano insieme su pubblico ampio, su interessi e su chi ha già visto i video: la stessa campagna esplora e recupera nello stesso momento.",
           },
           {
-            titolo: "Le campagne nuove",
+            titolo: "Le creatività, un angolo per volta",
             testo:
-              "Ripartenza su due programmi specifici, ciascuno con la propria pagina e i propri messaggi, invece di una comunicazione unica rivolta a un pubblico che non è uno solo.",
+              "Dodici brief e i testi degli annunci, con gli agganci video costruiti su angoli diversi e messi a confronto fra loro. Quale motivo convince si scopre facendolo vedere, non decidendolo a tavolino prima di partire.",
+          },
+          {
+            titolo: "L'offerta per chi arriva nuovo",
+            testo:
+              "Una promozione dedicata a chi non ha mai comprato, spinta da campagne sue, più la promozione annuale nel momento dell'anno in cui rientrare in una routine ha senso. Chi è già abbonato non le vede: è la stessa regola dei pubblici, cioè non pagare per parlare a chi ha già detto di sì.",
           },
           {
             titolo: "L'analisi strategica",
@@ -264,7 +269,7 @@ export const progetti: Progetto[] = [
         ],
 
         comeFunzionaAdesso:
-          "Oggi gli eventi partono anche dal server, il consenso comanda da un punto solo, e le campagne girano su pubblici che non contengono più chi è già abbonato. È la parte meno visibile del lavoro ed è quella che regge tutto il resto: senza, ogni decisione presa guardando i numeri sarebbe stata presa guardando numeri sbagliati.",
+          "Oggi gli eventi partono anche dal server, il consenso comanda da un punto solo, e la pubblicità gira su tutta la gamma: un programma per campagna, il recupero di chi ha già visto, la promozione per i nuovi e quella annuale al momento giusto. La parte sulla misurazione è la meno visibile di tutte ed è quella che regge il resto: senza, ogni decisione presa guardando i numeri sarebbe stata presa guardando numeri sbagliati.",
       },
       {
         titolo: "Un allenamento invece di una prova",
