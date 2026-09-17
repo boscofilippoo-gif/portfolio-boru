@@ -1030,11 +1030,7 @@ export const progetti: Progetto[] = [
     cosaAbbiamoFatto: ["Strategia", "Art direction", "Copywriting", "Packaging"],
     cover: {
       src: "/progetti/charms/cover.webp",
-      alt: "Due confezioni Charms, una rossa col peperoncino e una viola con la melanzana, su fondo nero",
-    },
-    coverVerticale: {
-      src: "/progetti/charms/cover-verticale.webp",
-      alt: "La confezione rossa di Charms con il peperoncino, su fondo nero",
+      alt: "L'esecutivo di stampa della confezione Charms Teddy, aperto in piano, con l'orso, le quote e le tracce di taglio",
     },
     intro:
       "Riportare Charms in grande distribuzione con un prodotto capace di restituire ai più giovani la stessa ventata di colore degli anni Ottanta — parlando però la lingua di adesso.",
@@ -1103,6 +1099,11 @@ export const progetti: Progetto[] = [
       },
     ],
     galleria: [
+      {
+        src: "/progetti/charms/pacchetti.webp",
+        alt: "Due confezioni Charms, una rossa col peperoncino e una viola con la melanzana, su fondo nero",
+        didascalia: "Lo stesso esecutivo, una volta stampato e piegato",
+      },
       {
         src: "/progetti/charms/linea-emoji.webp",
         alt: "Quattro confezioni Charms della linea emoji: pesca, melanzana, fantasma e peperoncino",
