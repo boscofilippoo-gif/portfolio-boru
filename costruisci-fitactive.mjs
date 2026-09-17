@@ -1,8 +1,8 @@
-// Cover di FitActive. Non esistono immagini utilizzabili: le creatività non
-// sono nel progetto, quelle della casa madre sono di terzi e le foto delle
-// sedi non hanno liberatoria. La cover rappresenta quindi la decisione del
-// progetto — un modello, trentatré declinazioni — nei colori del marchio.
-// Se arriva il deck del piano di partenza, va sostituita con le sue slide.
+// Lo schema del sistema editoriale di FitActive: un modello, trentatré
+// declinazioni. Sta in galleria e non come cover, perché spiega la decisione
+// invece di illustrarla — una copertina deve far riconoscere il progetto,
+// uno schema deve chiarirlo. Se arriva il deck del piano di partenza, le sue
+// slide dicono la stessa cosa meglio.
 //
 //   node costruisci-fitactive.mjs
 import sharp from "sharp";
@@ -71,9 +71,6 @@ function griglia({ larg, alt, verticale }) {
 mkdirSync("public/progetti/fitactive", { recursive: true });
 
 await sharp(Buffer.from(griglia({ larg: 1600, alt: 1200, verticale: false })))
-  .webp({ quality: 88 }).toFile("public/progetti/fitactive/cover.webp");
+  .webp({ quality: 88 }).toFile("public/progetti/fitactive/sistema.webp");
 
-await sharp(Buffer.from(griglia({ larg: 1080, alt: 1920, verticale: true })))
-  .webp({ quality: 88 }).toFile("public/progetti/fitactive/cover-verticale.webp");
-
-console.log("cover FitActive pronte");
+console.log("schema del sistema pronto");

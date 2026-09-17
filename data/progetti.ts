@@ -386,11 +386,11 @@ export const progetti: Progetto[] = [
     cosaAbbiamoFatto: ["Piano editoriale", "Campagne", "Schede locali", "Report"],
     cover: {
       src: "/progetti/fitactive/cover.webp",
-      alt: "Composizione grafica: trentatré riquadri arancioni identici disposti su fondo scuro",
+      alt: "L'insegna a stella al neon di una palestra FitActive di sera, con le persone in attesa fuori",
     },
     coverVerticale: {
       src: "/progetti/fitactive/cover-verticale.webp",
-      alt: "La stessa composizione in formato verticale: trentatré riquadri arancioni identici",
+      alt: "L'arco di palloncini arancioni all'apertura di una sede FitActive",
     },
     intro:
       "Trentatré palestre, cinque proprietà diverse e una sola persona che approva. Il problema non era cosa dire: era riuscire a dirlo ovunque, in tempo.",
@@ -546,7 +546,20 @@ export const progetti: Progetto[] = [
           "Il sistema di gestione dei contatti è una proposta, non una cosa che gira: è costruito nel dettaglio ma non ancora adottato, e va detto. Quello che è cambiato davvero è dove si guarda — dalla campagna al richiamo — e il fatto che ora esistano dati per sede su cui discutere invece di impressioni. La collaborazione prosegue.",
       },
     ],
-    galleria: [],
+    galleria: [
+      {
+        src: "/progetti/fitactive/sistema.webp",
+        alt: "Schema: una scheda chiara affiancata a trentatré riquadri arancioni identici",
+        didascalia:
+          "Un modello, trentatré declinazioni. Il contenuto si scrive una volta e cambia solo dove deve: nome della sede, indirizzo, orari.",
+      },
+      {
+        src: "/progetti/fitactive/inaugurazione.webp",
+        alt: "L'apertura di una sede FitActive, con l'arco di palloncini arancioni davanti all'ingresso",
+        didascalia:
+          "Il linguaggio visivo del marchio, che era già a posto: le fotografie delle sedi sono della rete. Il lavoro è stato lasciarlo dov'era e cambiare il resto.",
+      },
+    ],
   },
   {
     slug: "eddyline",

@@ -23,6 +23,8 @@ export const dimensioni: Record<string, [number, number]> = {
   "/progetti/eddyline/split-decisioni.png": [2400, 1029],
   "/progetti/fitactive/cover-verticale.webp": [1080, 1920],
   "/progetti/fitactive/cover.webp": [1600, 1200],
+  "/progetti/fitactive/inaugurazione.webp": [2000, 1500],
+  "/progetti/fitactive/sistema.webp": [1600, 1200],
   "/progetti/konsulto/cover-verticale.webp": [1080, 1920],
   "/progetti/konsulto/cover.webp": [1600, 1200],
   "/progetti/konsulto/distribuzione.png": [2400, 1800],
