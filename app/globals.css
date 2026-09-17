@@ -179,9 +179,9 @@
     /* Legata alla larghezza, all'altezza e al numero di progetti: l'indice
        deve stare in una schermata sola e i progetti continuano ad aumentare.
        `--voci` arriva dal componente, così il coefficiente non va ritoccato
-       a ogni scheda nuova. Il 54svh è lo spazio che resta alla lista una
+       a ogni scheda nuova. Il 52svh è lo spazio che resta alla lista una
        volta tolti intestazione, piè di pagina e margini. */
-    font-size: max(1.9rem, min(5.4vw, calc(54svh / var(--voci, 6))));
+    font-size: max(1.9rem, min(5.4vw, calc(52svh / var(--voci, 6))));
     line-height: 1.04;
     letter-spacing: -0.03em;
     color: color-mix(in srgb, var(--color-porcellana) 64%, transparent);

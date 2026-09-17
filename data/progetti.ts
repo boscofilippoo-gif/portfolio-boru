@@ -376,6 +376,179 @@ export const progetti: Progetto[] = [
     ],
   },
   {
+    slug: "fitactive",
+    nome: "FitActive",
+    sottotitolo: "Trentatré palestre gestite come se fossero una",
+    settore: "Palestre in franchising",
+    anno: "2026",
+    sito: "https://fitactive.it",
+    crediti: "con meravigliä LAB",
+    cosaAbbiamoFatto: ["Piano editoriale", "Campagne", "Schede locali", "Report"],
+    cover: {
+      src: "/progetti/fitactive/cover.webp",
+      alt: "Composizione grafica: trentatré riquadri arancioni identici disposti su fondo scuro",
+    },
+    coverVerticale: {
+      src: "/progetti/fitactive/cover-verticale.webp",
+      alt: "La stessa composizione in formato verticale: trentatré riquadri arancioni identici",
+    },
+    intro:
+      "Trentatré palestre, cinque proprietà diverse e una sola persona che approva. Il problema non era cosa dire: era riuscire a dirlo ovunque, in tempo.",
+    capitoli: [
+      {
+        titolo: "Un contenuto per trentatré sedi",
+        sottotitolo:
+          "Quando il collo di bottiglia non è la produzione ma l'approvazione.",
+
+        contesto: {
+          testo:
+            "La pubblicazione sui social avveniva quando in sede qualcuno aveva tempo, con buchi fra un pacchetto di materiali della casa madre e il successivo. Le campagne erano impostate su traffico e messaggi invece che su moduli contatto, quindi non c'era modo di dire quali iscritti arrivassero dalla pubblicità. E gli accessi erano frammentati: pagine social e account pubblicitari mancanti all'appello, schede Google aperte con gli account personali di chi lavorava in sede.",
+          punti: [
+            "Trentatré sedi, cinque proprietà, un solo referente che approva",
+            "Pubblicazione affidata a chi in sede aveva tempo",
+            "Campagne su traffico e messaggi, senza modo di risalire agli iscritti",
+            "Pagine social e account pubblicitari mancanti all'appello",
+            "Schede Google aperte con account personali delle sedi",
+          ],
+        },
+
+        decisione: {
+          citazione:
+            "Un contenuto solo, declinato trentatré volte. Non trentatré contenuti.",
+          consueto: {
+            titolo: "Come si fa di solito",
+            testo:
+              "Piano editoriale per punto vendita: ogni sede ha i suoi contenuti locali. Non è sbagliato in sé, ed è quello che tutti si aspettano. Il difetto è aritmetico: con una sola persona che approva, un piano per sede significa centinaia di pezzi al mese da validare. L'approvazione non arriva mai in tempo, si aprono buchi di pubblicazione, e il tempo dell'agenzia finisce in coordinamento invece che in produzione.",
+          },
+          invece: {
+            titolo: "Cosa abbiamo fatto invece",
+            testo:
+              "Pochi modelli al mese per tutta la rete. Da sede a sede cambiano nome, indirizzo, telefono e il dettaglio locale solo dove aggiunge qualcosa, e l'approvazione avviene sui modelli invece che sui pezzi finiti. Si perde specificità locale e si guadagnano puntualità di uscita, coerenza visiva su tutta la rete e tempi di approvazione certi. Su trentatré sedi è un cambio che rende il piano eseguibile invece che teorico.",
+          },
+        },
+
+        passaggi: [
+          {
+            titolo: "L'analisi prima degli accessi",
+            testo:
+              "Prima di chiedere una password, la lettura di tutto quello che era già pubblico: pagine social delle sedi, schede Google, recensioni, promozioni in corso. È da lì che è emersa la tesi di partenza — il pubblico c'è già e va alimentato con continuità, non conquistato da capo.",
+          },
+          {
+            titolo: "Il piano deciso in una riunione sola",
+            testo:
+              "Novanta minuti in sede con l'obiettivo di uscire con il piano condiviso e gli accessi avviati, non con un documento da rileggere con calma. Lì sono state fissate le categorie di contenuto, gli angoli creativi, il calendario delle iniziative dell'anno e il canale su cui parlarsi.",
+          },
+          {
+            titolo: "La riconciliazione degli accessi",
+            testo:
+              "Tre fonti diverse confrontate riga per riga: le comunicazioni del cliente, l'audit interno e la lista degli account pubblicitari. Sono emersi profili e account mancanti, account di un altro marchio arrivati per errore, e sedi indicate con nomi interni che non coincidono con quelli ufficiali. Lavorare sull'asset sbagliato era un rischio concreto.",
+          },
+          {
+            titolo: "Il ciclo mensile sempre uguale",
+            testo:
+              "Ogni mese le stesse date: arrivo dei materiali, piano e impostazione campagne, produzione dei modelli e delle declinazioni, un solo passaggio di approvazione, programmazione, report. Sapere cosa succede il giorno dodici è quello che rende governabile una rete di questa dimensione.",
+          },
+          {
+            titolo: "Le schede locali, una per una",
+            testo:
+              "Dati, orari di apertura continuata, foto, recensioni, domande e risposte: presidiate sede per sede. Per una palestra di quartiere la scheda sulla mappa è spesso il primo contatto, molto prima di qualunque profilo social.",
+          },
+          {
+            titolo: "L'identità lasciata dov'era",
+            testo:
+              "Arancio e nero, il payoff, la mascotte, il modo di parlare delle sedi: non sono stati toccati. Erano già strumenti che funzionavano, e la reputazione accumulata dalle sedi andava ereditata invece che riscritta. Un'agenzia nuova di solito ridisegna; qui ridisegnare avrebbe distrutto valore.",
+          },
+        ],
+
+        strumenti: [
+          { nome: "Meta Business Manager", ruolo: "Pagine, account pubblicitari ed esclusioni geografiche fra sedi vicine" },
+          { nome: "Schede Google", ruolo: "La presenza sulla mappa di ogni sede, presidiata una per una" },
+          { nome: "Telegram", ruolo: "Il canale con il cliente: tiene insieme conversazione e documenti" },
+          { nome: "Calendario condiviso", ruolo: "Il piano e lo stato degli account, visibili a tutti" },
+          { nome: "Generazione automatica dei documenti", ruolo: "Script video e report prodotti da dati strutturati, con controllo visivo prima della consegna" },
+        ],
+
+        comeFunzionaAdesso:
+          "Oggi la rete pubblica con un ritmo prevedibile, le uscite sono coerenti da una sede all'altra e l'approvazione richiede una firma sola al mese invece di centinaia. Non è automazione, è organizzazione — ma su trentatré sedi è la differenza fra un piano che esiste e un piano che esce davvero.",
+      },
+      {
+        titolo: "Il report che sposta il problema",
+        sottotitolo:
+          "Usare i propri risultati buoni per indicare dove il valore si perde.",
+
+        contesto: {
+          testo:
+            "La prima campagna a modulo contatti della rete ha sostituito quelle su traffico e messaggi, con un codice da consegnare in reception come secondo livello di attribuzione. I contatti sono arrivati, e a quel punto i dati hanno detto una cosa scomoda: quasi nessuno diventava un appuntamento, mentre quasi tutti quelli che a un appuntamento ci arrivavano si iscrivevano. La perdita non era nella vendita in sede e non era nella campagna. Era nel richiamo.",
+          punti: [
+            "Contatti lavorati a mano da chi in reception aveva tempo",
+            "Velocità di ricontatto non tracciata e molto variabile",
+            "Messaggistica bloccata più volte per invii massivi, con il richiamo fermo",
+            "Nessun collegamento fra una campagna online e un contratto firmato in sede",
+          ],
+        },
+
+        decisione: {
+          citazione:
+            "I numeri erano buoni. Usarli per chiudere sarebbe stato il modo più rapido di non servire a niente.",
+          consueto: {
+            titolo: "Come si fa di solito",
+            testo:
+              "Il report di fine campagna si chiude sui propri risultati: quanto è costato un contatto, quanto è rientrato, com'è andata rispetto a prima. È comodo perché tutto ciò che si racconta è merito di chi lo racconta, e nessuno deve sentirsi messo in discussione. Il cliente ringrazia, e il mese dopo il problema vero è ancora lì dov'era.",
+          },
+          invece: {
+            titolo: "Cosa abbiamo fatto invece",
+            testo:
+              "I risultati sono stati usati come prova che offerta e messaggio funzionavano, e il documento si è spostato su dove il valore si perdeva davvero: la gestione dei contatti in reception. È una scelta che espone, perché invita il cliente a rispondere «allora il problema siamo noi». Ma indicare il punto giusto vale più che incassare un risultato.",
+          },
+        },
+
+        passaggi: [
+          {
+            titolo: "La campagna a modulo contatti",
+            testo:
+              "Al posto di traffico e messaggi, un modulo e una pagina tracciata, più un codice da dare in reception per collegare la persona alla campagna da cui era arrivata. Budget quasi identico fra le sedi, così le differenze di risultato non si potessero spiegare con la spesa.",
+          },
+          {
+            titolo: "I dati raccolti sede per sede",
+            testo:
+              "Non una media di rete ma una riga per ciascuna palestra. È l'unico modo per vedere la forbice fra sedi con lo stesso formato e lo stesso budget, e per accorgersi che il problema non sta dove lo si stava cercando.",
+          },
+          {
+            titolo: "I buchi dichiarati invece che livellati",
+            testo:
+              "Dati mancanti su alcune sedi, anomalie evidenti su altre, periodo di rilevazione non registrato: tutto raccolto in una pagina apposta e marcato come da verificare. Un report che nasconde i buchi è un report che non si può usare per decidere.",
+          },
+          {
+            titolo: "Una sede tolta dalla media",
+            testo:
+              "Una sede la cui campagna non era mai partita produceva un ritorno assurdo che alzava la media di rete. È stata esclusa e indicata come non disponibile: si è rinunciato a un numero migliore per averne uno difendibile.",
+          },
+          {
+            titolo: "Il documento ridotto all'osso",
+            testo:
+              "Dalla versione lunga con tutte le schede sede a una versione corta, tenendo la lunga come riserva per le domande. Un documento di presentazione che nessuno finisce di leggere non ha presentato niente.",
+          },
+          {
+            titolo: "Il flusso proposto, definito al minuto",
+            testo:
+              "Non «serve un gestionale», ma cosa succede e quando: il contatto entra con la propria origine, riceve entro un minuto un messaggio dal numero della sua palestra — non dal marchio — con due orari concreti e una sola domanda. Da lì tre strade a seconda di come risponde, e tentativi programmati per chi non risponde affatto.",
+          },
+        ],
+
+        strumenti: [
+          { nome: "Modulo contatti", ruolo: "La raccolta, con la provenienza attaccata al contatto" },
+          { nome: "Pagina tracciata e codice in reception", ruolo: "Due livelli di attribuzione al posto di nessuno" },
+          { nome: "Dati per sede", ruolo: "Una riga per palestra invece di una media di rete" },
+          { nome: "Generazione del report", ruolo: "Documento e allegati prodotti da dati strutturati, per rifarli senza rifarli a mano" },
+        ],
+
+        comeFunzionaAdesso:
+          "Il sistema di gestione dei contatti è una proposta, non una cosa che gira: è costruito nel dettaglio ma non ancora adottato, e va detto. Quello che è cambiato davvero è dove si guarda — dalla campagna al richiamo — e il fatto che ora esistano dati per sede su cui discutere invece di impressioni. La collaborazione prosegue.",
+      },
+    ],
+    galleria: [],
+  },
+  {
     slug: "eddyline",
     nome: "Eddyline",
     sottotitolo: "La landing page che ti fa scegliere",
