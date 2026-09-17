@@ -349,6 +349,18 @@ export const progetti: Progetto[] = [
     ],
     galleria: [
       {
+        src: "/progetti/postura-da-paura/banner-desk.webp",
+        alt: "Immagine del marchio su fondo prugna: un uomo seduto su un cubo, accanto al segno grafico",
+        didascalia:
+          "Un colore e una persona per ogni percorso. L'impianto dell'immagine invece non cambia mai: il segno a sinistra, chi si allena a destra.",
+      },
+      {
+        src: "/progetti/postura-da-paura/banner-lilla.webp",
+        alt: "Immagine del marchio su fondo lilla: una donna seduta su un cubo, accanto al segno grafico",
+        didascalia:
+          "Lo stesso schema in un altro colore. È così che i percorsi restano distinti senza sembrare marchi diversi.",
+      },
+      {
         src: "/progetti/postura-da-paura/landing-basic.webp",
         alt: "Pagina di prova gratuita del percorso base, fondo rosa, titolo «Allenati per il tuo benessere, non per uno standard»",
         didascalia: "Il percorso base: la promessa è il benessere, non l'aspetto",
@@ -558,6 +570,12 @@ export const progetti: Progetto[] = [
         alt: "Una sala pesi FitActive con la rastrelliera dei manubri, le panche e i palloncini dell'apertura",
         didascalia:
           "Sedi diverse, stessa sala. È la ragione per cui un contenuto solo può valere per tutte: cambia l'indirizzo, non quello che si vede.",
+      },
+      {
+        src: "/progetti/fitactive/apertura.webp",
+        alt: "Il giorno dell'apertura di una sede FitActive, con i trainer in maglia arancione e i primi visitatori fra le macchine",
+        didascalia:
+          "L'apertura di una sede è l'unico momento in cui il calendario è davvero locale. Tutto il resto si può decidere una volta per tutte.",
       },
     ],
   },
