@@ -152,6 +152,10 @@ export function IndiceProgetti() {
         ref={lista}
         className="indice-lista relative z-10 w-full"
         data-attivo={attivo !== null}
+        // Il numero di voci serve al CSS per dimensionare i nomi: l'indice
+        // deve stare in una schermata sola, e i progetti continuano ad
+        // aumentare. Senza, il coefficiente andrebbe ritoccato ogni volta.
+        style={{ "--voci": progetti.length } as React.CSSProperties}
       >
         {progetti.map((p) => (
           <li key={p.slug} data-slug={p.slug} data-attivo={attivo === p.slug}>

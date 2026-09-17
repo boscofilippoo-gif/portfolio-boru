@@ -176,10 +176,12 @@
   .indice-nome {
     font-family: var(--font-display);
     font-weight: 600;
-    /* Legata anche all'altezza dello schermo e non solo alla larghezza:
-       l'indice deve stare in una schermata sola, e i progetti aumentano.
-       Con 8vw fissi, al settimo nome la lista sbordava. */
-    font-size: max(1.9rem, min(5.4vw, 8.2svh));
+    /* Legata alla larghezza, all'altezza e al numero di progetti: l'indice
+       deve stare in una schermata sola e i progetti continuano ad aumentare.
+       `--voci` arriva dal componente, così il coefficiente non va ritoccato
+       a ogni scheda nuova. Il 54svh è lo spazio che resta alla lista una
+       volta tolti intestazione, piè di pagina e margini. */
+    font-size: max(1.9rem, min(5.4vw, calc(54svh / var(--voci, 6))));
     line-height: 1.04;
     letter-spacing: -0.03em;
     color: color-mix(in srgb, var(--color-porcellana) 64%, transparent);

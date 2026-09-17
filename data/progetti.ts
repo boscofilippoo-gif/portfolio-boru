@@ -171,6 +171,206 @@ export const progetti: Progetto[] = [
     ],
   },
   {
+    slug: "postura-da-paura",
+    nome: "Postura da Paura",
+    sottotitolo: "Due lavori su una piattaforma di allenamento in abbonamento",
+    settore: "Fitness in abbonamento",
+    anno: "2026",
+    sito: "https://posturadapaura.com",
+    crediti: "con meravigliä LAB",
+    cosaAbbiamoFatto: ["Strategia", "Campagne", "Tracciamento", "Funnel"],
+    cover: {
+      src: "/progetti/postura-da-paura/cover.webp",
+      alt: "La pagina di prova gratuita di Postura da Paura, su fondo rosa, con il titolo «Allenati per il tuo benessere, non per uno standard»",
+    },
+    coverVerticale: {
+      src: "/progetti/postura-da-paura/cover-verticale.webp",
+      alt: "La stessa pagina vista da telefono, con il titolo e il pulsante di sblocco dell'allenamento",
+    },
+    intro:
+      "Rimettere in ordine quello che si misura, e cambiare il modo in cui si fa provare il servizio. Due lavori distinti, a mesi di distanza, per lo stesso cliente.",
+    capitoli: [
+      {
+        titolo: "Rimettere a fuoco l'acquisizione",
+        sottotitolo:
+          "Fermare la spesa finché i numeri su cui si decide non sono affidabili.",
+
+        contesto: {
+          testo:
+            "La spesa pubblicitaria girava su una misurazione di cui non ci si poteva fidare. I clienti già abbonati erano dentro i pubblici di acquisizione, quindi una parte degli acquisti attribuiti alle campagne sarebbe arrivata comunque. Ogni click su ogni pulsante raggiungeva la piattaforma come lo stesso identico evento, quindi non si distingueva chi chiedeva informazioni da chi comprava. Un cambio nella gestione dei consensi aveva interrotto l'ottimizzazione senza che nessun dato lo segnalasse. E le pagine di atterraggio vivevano su tre strumenti diversi, ognuno con un modo suo di contare.",
+          punti: [
+            "Clienti già abbonati dentro i pubblici di acquisizione",
+            "Ogni click su ogni pulsante registrato come lo stesso evento",
+            "Un cambio nei consensi che aveva fermato l'ottimizzazione",
+            "Pagine di atterraggio su tre strumenti diversi",
+            "Un passaggio intermedio attivo da anni, ereditato e mai verificato",
+          ],
+        },
+
+        decisione: {
+          citazione:
+            "Prima di spendere meglio bisogna sapere cosa si sta misurando.",
+          consueto: {
+            titolo: "Come si fa di solito",
+            testo:
+              "Si alza il budget e si ottimizza sui numeri che la piattaforma pubblicitaria restituisce. È comodo, perché quei numeri arrivano subito e sembrano quasi sempre in crescita. Ma se dentro i pubblici ci sono i clienti già paganti, la piattaforma si prende il merito di acquisti che sarebbero arrivati lo stesso: più si spende più sembra andare bene, mentre il ricavo nuovo non si muove.",
+          },
+          invece: {
+            titolo: "Cosa abbiamo fatto invece",
+            testo:
+              "Abbiamo fermato l'aumento di spesa e spento le campagne in corso prima di toccare qualunque altra cosa. Poi ricostruita la misurazione, mandando gli eventi anche dal server invece che dal solo browser, e messo il consenso come unico interruttore di ciò che parte. Le campagne sono ripartite solo dopo, su due programmi specifici invece che sul marchio in generale.",
+          },
+        },
+
+        passaggi: [
+          {
+            titolo: "L'acquisto di prova",
+            testo:
+              "Prima di formulare ipotesi, un acquisto vero fatto da noi per vedere cosa arrivava davvero dall'altra parte. È così che è emerso che i click finivano tutti nello stesso evento.",
+          },
+          {
+            titolo: "Gli eventi mandati dal server",
+            testo:
+              "Le conversioni smettono di dipendere solo dal browser, dove impostazioni di sistema e blocchi ne fanno sparire una parte. Ogni evento parte anche dal server, con un identificativo che permette di riconoscerlo e non contarlo due volte.",
+          },
+          {
+            titolo: "Il consenso come unico interruttore",
+            testo:
+              "Tutto ciò che va verso la piattaforma pubblicitaria passa da una sola condizione: il consenso dato dalla persona. Prima la regola era distribuita in più punti e non era verificabile in un colpo solo.",
+          },
+          {
+            titolo: "Lo spegnimento del vecchio passaggio",
+            testo:
+              "Un componente attivo da anni continuava a mandare gli stessi eventi in parallelo. Va spento, ma solo dopo aver verificato che il canale nuovo li copra tutti: nel frattempo si accetta un periodo di doppio invio.",
+          },
+          {
+            titolo: "Le campagne nuove",
+            testo:
+              "Ripartenza su due programmi specifici, ciascuno con la propria pagina e i propri messaggi, invece di una comunicazione unica rivolta a un pubblico che non è uno solo.",
+          },
+          {
+            titolo: "L'analisi strategica",
+            testo:
+              "In parallelo, la rimessa in ordine di posizionamento, listino e pubblici: quali gruppi raggiungere, con quale prodotto e in che ordine. È il documento a cui si torna quando si deve decidere cosa fare dopo.",
+          },
+        ],
+
+        strumenti: [
+          { nome: "Segment", ruolo: "Punto unico di raccolta degli eventi, che li smista agli altri strumenti" },
+          { nome: "Conversions API", ruolo: "Invio delle conversioni dal server e non dal solo browser" },
+          { nome: "Mixpanel", ruolo: "Dati d'uso del prodotto: prove attivate, allenamenti fatti, acquisti" },
+          { nome: "Metabase", ruolo: "Storico e liste, come riferimento per i controlli" },
+          { nome: "Google Analytics", ruolo: "Misurazione del traffico, rimessa in riga insieme al resto" },
+        ],
+
+        comeFunzionaAdesso:
+          "Oggi gli eventi partono anche dal server, il consenso comanda da un punto solo, e le campagne girano su pubblici che non contengono più chi è già abbonato. È la parte meno visibile del lavoro ed è quella che regge tutto il resto: senza, ogni decisione presa guardando i numeri sarebbe stata presa guardando numeri sbagliati.",
+      },
+      {
+        titolo: "Un allenamento invece di una prova",
+        sottotitolo:
+          "Chiedere molto meno all'inizio, per far succedere qualcosa davvero.",
+
+        contesto: {
+          testo:
+            "Per provare il servizio si attivava una prova gratuita di sette giorni, e la maggior parte di chi la attivava non faceva nemmeno un esercizio: scadeva senza essere mai usata. In parallelo un programma gratuito via email raccoglieva contatti a costo basso e con buone aperture, ma quasi nessuno arrivava all'abbonamento. Due strade diverse con lo stesso esito: molti contatti, pochissime persone che provavano davvero.",
+          punti: [
+            "Una prova di sette giorni che la maggior parte non iniziava nemmeno",
+            "Un programma gratuito molto aperto e quasi mai convertito",
+            "Nessuna pagina costruita su un pubblico specifico",
+            "Nessun automatismo su scadenze e rinnovi",
+          ],
+        },
+
+        decisione: {
+          citazione:
+            "Abbassare il costo di provare, non convincere a comprare.",
+          consueto: {
+            titolo: "Come si fa di solito",
+            testo:
+              "La prova a tempo: sette giorni per esplorare tutto. Sembra generosa, ma chiede un impegno continuato proprio a chi non sa da dove cominciare. Chi entra e trova un catalogo di programmi rimanda la scelta, e la prova scade senza che sia successo niente — lasciando anche la sensazione di aver già provato.",
+          },
+          invece: {
+            titolo: "Cosa abbiamo fatto invece",
+            testo:
+              "Un allenamento solo. La persona sceglie il percorso che la riguarda e lo riceve subito, dentro la pagina, senza aspettare una email. Non deve decidere da dove partire né ricordarsi di tornare: quando esce ha già fatto la cosa per cui era arrivata.",
+          },
+        },
+
+        passaggi: [
+          {
+            titolo: "La scelta del percorso",
+            testo:
+              "Tre pagine, una per ciascun pubblico, con lo stesso impianto e messaggi diversi. Chi arriva non sceglie dentro un catalogo: è già sulla pagina che parla di lui.",
+          },
+          {
+            titolo: "La consegna nella pagina",
+            testo:
+              "L'allenamento si guarda subito dopo il modulo, sulla pagina stessa. Quello che è stato promesso non dipende dal fatto che una email venga consegnata, trovata e aperta.",
+          },
+          {
+            titolo: "Quattro giorni, non di più",
+            testo:
+              "Una sequenza breve: dopo la consegna, un messaggio al giorno per quattro giorni. Chi non si convince in quattro giorni non si convince al sesto, e continuare a scrivere costa la disiscrizione.",
+          },
+          {
+            titolo: "Due strade a seconda di chi ha aperto",
+            testo:
+              "Dal secondo messaggio il percorso si divide fra chi ha cliccato e chi no: allo stesso punto della sequenza arrivano due testi diversi, perché parlano a due persone in due momenti diversi.",
+          },
+          {
+            titolo: "Il controllo prima di ogni proposta",
+            testo:
+              "Prima di ogni email che propone l'abbonamento il sistema verifica se la persona ha già comprato, e in quel caso la fa uscire. Continuare a vendere a chi ha già comprato è il modo più rapido di perderlo.",
+          },
+          {
+            titolo: "Nessuna scadenza inventata",
+            testo:
+              "L'offerta per i nuovi iscritti non scade davvero, quindi non c'è nessun conto alla rovescia. L'urgenza è quella vera: il tempo che si perde continuando a rimandare.",
+          },
+        ],
+
+        strumenti: [
+          { nome: "Lovable", ruolo: "Le tre pagine e la consegna dell'allenamento" },
+          { nome: "Brevo", ruolo: "La sequenza email e le liste di chi ha già comprato" },
+          { nome: "Mixpanel", ruolo: "Chi ha comprato e cosa, per far uscire le persone dalla sequenza" },
+          { nome: "n8n", ruolo: "Il ponte che tiene allineate le liste a intervalli regolari" },
+          { nome: "Dailymotion", ruolo: "Il video dell'allenamento, senza pubblicità né contenuti correlati" },
+        ],
+
+        comeFunzionaAdesso:
+          "Il sistema è in corso di attivazione e la collaborazione prosegue. Quello che c'è è l'impianto completo: le tre pagine, la sequenza per ciascun percorso, l'uscita automatica di chi compra e il collegamento che tiene aggiornate le liste. Sui risultati non c'è ancora niente da dire, ed è troppo presto perché ci sia.",
+      },
+    ],
+    galleria: [
+      {
+        src: "/progetti/postura-da-paura/landing-basic.webp",
+        alt: "Pagina di prova gratuita del percorso base, fondo rosa, titolo «Allenati per il tuo benessere, non per uno standard»",
+        didascalia: "Il percorso base: la promessa è il benessere, non l'aspetto",
+      },
+      {
+        src: "/progetti/postura-da-paura/landing-strong.webp",
+        alt: "Pagina di prova gratuita del percorso ad alta intensità, fondo nero, titolo «Allenamento ad alta intensità. A casa o in palestra»",
+        didascalia: "Stesso impianto, pubblico diverso",
+      },
+      {
+        src: "/progetti/postura-da-paura/landing-menopausa.webp",
+        alt: "Pagina di prova gratuita del percorso menopausa, fondo lilla, titolo «Il tuo corpo in menopausa non ha bisogno di meno. Ha bisogno di meglio»",
+        didascalia: "Il terzo percorso, con un messaggio che non gira intorno al tema",
+      },
+      {
+        src: "/progetti/postura-da-paura/basic-sezione.webp",
+        alt: "Sezione della pagina con una fotografia su fondo rosa e il titolo «Il benessere nasce quando l'allenamento rispetta il tuo corpo»",
+        didascalia: "Ogni pagina argomenta la promessa che ha appena fatto",
+      },
+      {
+        src: "/progetti/postura-da-paura/strong-sezione.webp",
+        alt: "Sezione della pagina ad alta intensità, con fotografia su fondo rosso e la fascia dei vantaggi",
+        didascalia: "La stessa struttura, ripetuta in un altro mondo di colore",
+      },
+    ],
+  },
+  {
     slug: "eddyline",
     nome: "Eddyline",
     sottotitolo: "La landing page che ti fa scegliere",

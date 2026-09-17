@@ -40,6 +40,15 @@ Ogni scheda ha `capitoli`, un array. Quasi tutte ne hanno uno solo; MIWA due,
 perché sono due incarichi distinti per lo stesso cliente. L'intestazione con
 «Capitolo 01» compare solo quando i capitoli sono più di uno.
 
+### Schermate di pagine web
+
+`node cattura-pagine.mjs <config.json>` cattura pagine pilotando Chrome dal
+protocollo DevTools. Serve al posto di `chrome --screenshot` perché permette di
+impostare valori in `localStorage` **prima** che la pagina carichi: i banner
+cookie oscurano tutta la pagina, e dichiarare il consenso in anticipo li fa
+non comparire. Nessun click, nessun modulo compilato — un modulo inviato
+creerebbe un contatto falso nel sistema del cliente.
+
 ### Materiale che arriva in PDF
 
 `node estrai-immagini.mjs <file.pdf> <cartella> [larghezzaMinima]` tira fuori
