@@ -181,11 +181,11 @@ export const progetti: Progetto[] = [
     cosaAbbiamoFatto: ["Strategia", "Campagne", "Tracciamento", "Funnel"],
     cover: {
       src: "/progetti/postura-da-paura/cover.webp",
-      alt: "La pagina di prova gratuita di Postura da Paura, su fondo rosa, con il titolo «Allenati per il tuo benessere, non per uno standard»",
+      alt: "Immagine del marchio Postura da Paura: una donna seduta su un cubo, su fondo rosa, accanto al segno grafico del marchio",
     },
     coverVerticale: {
       src: "/progetti/postura-da-paura/cover-verticale.webp",
-      alt: "La stessa pagina vista da telefono, con il titolo e il pulsante di sblocco dell'allenamento",
+      alt: "La stessa immagine in verticale, con la figura in basso e il fondo rosa che sale",
     },
     intro:
       "Rimettere in ordine quello che si misura, e cambiare il modo in cui si fa provare il servizio. Due lavori distinti, a mesi di distanza, per lo stesso cliente.",
@@ -386,11 +386,11 @@ export const progetti: Progetto[] = [
     cosaAbbiamoFatto: ["Piano editoriale", "Campagne", "Schede locali", "Report"],
     cover: {
       src: "/progetti/fitactive/cover.webp",
-      alt: "L'insegna a stella al neon di una palestra FitActive di sera, con le persone in attesa fuori",
+      alt: "La sala attrezzi di una palestra FitActive il giorno dell'apertura, pareti arancioni e palloncini fra le panche",
     },
     coverVerticale: {
       src: "/progetti/fitactive/cover-verticale.webp",
-      alt: "L'arco di palloncini arancioni all'apertura di una sede FitActive",
+      alt: "La stessa sala vista in lunghezza, con il corridoio centrale fra le panche e i tapis roulant",
     },
     intro:
       "Trentatré palestre, cinque proprietà diverse e una sola persona che approva. Il problema non era cosa dire: era riuscire a dirlo ovunque, in tempo.",
@@ -554,10 +554,10 @@ export const progetti: Progetto[] = [
           "Un modello, trentatré declinazioni. Il contenuto si scrive una volta e cambia solo dove deve: nome della sede, indirizzo, orari.",
       },
       {
-        src: "/progetti/fitactive/inaugurazione.webp",
-        alt: "L'apertura di una sede FitActive, con l'arco di palloncini arancioni davanti all'ingresso",
+        src: "/progetti/fitactive/sala.webp",
+        alt: "Una sala pesi FitActive con la rastrelliera dei manubri, le panche e i palloncini dell'apertura",
         didascalia:
-          "Il linguaggio visivo del marchio, che era già a posto: le fotografie delle sedi sono della rete. Il lavoro è stato lasciarlo dov'era e cambiare il resto.",
+          "Sedi diverse, stessa sala. È la ragione per cui un contenuto solo può valere per tutte: cambia l'indirizzo, non quello che si vede.",
       },
     ],
   },
