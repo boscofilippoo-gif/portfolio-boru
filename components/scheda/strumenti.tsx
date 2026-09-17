@@ -1,6 +1,6 @@
-import type { Progetto } from "@/data/progetti";
+import type { Capitolo } from "@/data/progetti";
 
-export function Strumenti({ strumenti }: { strumenti: Progetto["strumenti"] }) {
+export function Strumenti({ strumenti }: { strumenti: Capitolo["strumenti"] }) {
   if (strumenti.length === 0) return null;
 
   return (

@@ -3,11 +3,17 @@
 // l'anteprima se l'immagine è WebP.
 //   node genera-og.mjs
 import sharp from "sharp";
+import { readdir } from "node:fs/promises";
 
 const W = 1200, H = 630;
 const NERO = { r: 0x1a, g: 0x16, b: 0x13 };
 
-const slug = ["eddyline", "swapa", "konsulto", "miwa"];
+// Ricavati dalle cartelle invece che scritti a mano: una lista fissa si
+// dimentica di aggiornarla ogni volta che entra un progetto.
+const slug = (await readdir("public/progetti", { withFileTypes: true }))
+  .filter((d) => d.isDirectory())
+  .map((d) => d.name)
+  .sort();
 
 for (const s of slug) {
   await sharp(`public/progetti/${s}/cover.webp`)

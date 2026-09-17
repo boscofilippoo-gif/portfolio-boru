@@ -176,7 +176,10 @@
   .indice-nome {
     font-family: var(--font-display);
     font-weight: 600;
-    font-size: clamp(2.75rem, 8vw, 7rem);
+    /* Legata anche all'altezza dello schermo e non solo alla larghezza:
+       l'indice deve stare in una schermata sola, e i progetti aumentano.
+       Con 8vw fissi, al settimo nome la lista sbordava. */
+    font-size: max(1.9rem, min(5.4vw, 8.2svh));
     line-height: 1.04;
     letter-spacing: -0.03em;
     color: color-mix(in srgb, var(--color-porcellana) 64%, transparent);

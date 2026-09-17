@@ -22,6 +22,31 @@ npm run dev
    node genera-og.mjs
    ```
 3. Aggiungi il record in `data/progetti.ts`.
+4. Rigenera le anteprime di condivisione: `node genera-og.mjs` (gli slug li
+   ricava dalle cartelle, non serve toccare lo script).
+
+### Crediti
+
+Il campo `crediti` compare nella testata della scheda come «Insieme a».
+Va scritto `"con meravigliä LAB"` o `"con CAWIPA"` — il prefisso «con» viene
+tolto in pagina. Assente significa lavoro fatto solo da noi.
+
+La grafia `meravigliä LAB` è quella giusta: minuscola iniziale, dieresi, LAB
+maiuscolo. Compare su cinque schede e deve essere identica ovunque.
+
+### Capitoli
+
+Ogni scheda ha `capitoli`, un array. Quasi tutte ne hanno uno solo; MIWA due,
+perché sono due incarichi distinti per lo stesso cliente. L'intestazione con
+«Capitolo 01» compare solo quando i capitoli sono più di uno.
+
+### Materiale che arriva in PDF
+
+`node estrai-immagini.mjs <file.pdf> <cartella> [larghezzaMinima]` tira fuori
+le immagini incorporate alla loro risoluzione originale. Su questa macchina non
+c'è nessuno strumento PDF installato e `sips` rasterizza solo la prima pagina:
+lo script legge gli oggetti del file ed estrae gli XObject immagine, quindi
+restituisce gli originali invece di schermate.
 
 La cover è l'unica cosa che si vede in home — riempie lo schermo intero
 quando si passa sul nome del progetto — quindi va scelta per prima e deve

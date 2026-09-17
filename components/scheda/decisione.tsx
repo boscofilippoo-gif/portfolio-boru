@@ -1,6 +1,6 @@
-import type { Progetto } from "@/data/progetti";
+import type { Capitolo } from "@/data/progetti";
 
-export function Decisione({ decisione }: { decisione: Progetto["decisione"] }) {
+export function Decisione({ decisione }: { decisione: Capitolo["decisione"] }) {
   return (
     <section>
       <h2 className="occhiello">La decisione</h2>

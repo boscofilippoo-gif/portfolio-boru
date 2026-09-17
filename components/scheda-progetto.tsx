@@ -44,6 +44,14 @@ export function SchedaProgetto({
             <dt className="occhiello">Cosa abbiamo fatto</dt>
             <dd className="mt-1.5 text-sm">{progetto.cosaAbbiamoFatto.join(" · ")}</dd>
           </div>
+          {progetto.crediti && (
+            <div>
+              <dt className="occhiello">Insieme a</dt>
+              <dd className="mt-1.5 text-sm">
+                {progetto.crediti.replace(/^con\s+/i, "")}
+              </dd>
+            </div>
+          )}
           {progetto.sito && (
             <div>
               <dt className="occhiello">Sito</dt>
@@ -78,19 +86,43 @@ export function SchedaProgetto({
         />
       </div>
 
-      <div className="mt-28 space-y-28 md:mt-40 md:space-y-36">
-        <Contesto contesto={progetto.contesto} />
-        <Decisione decisione={progetto.decisione} />
-        <Passaggi passaggi={progetto.passaggi} />
-        <Strumenti strumenti={progetto.strumenti} />
+      {progetto.capitoli.map((capitolo, i) => (
+        <div key={capitolo.titolo ?? i}>
+          {/* L'intestazione compare solo quando i capitoli sono più di uno:
+              su una scheda sola sarebbe una divisione che non divide niente. */}
+          {progetto.capitoli.length > 1 && (
+            <header
+              className={`border-t border-[color-mix(in_srgb,var(--color-porcellana)_14%,transparent)] pt-10 ${
+                i === 0 ? "mt-28 md:mt-40" : "mt-32 md:mt-44"
+              }`}
+            >
+              <p className="occhiello">Capitolo {String(i + 1).padStart(2, "0")}</p>
+              <h2 className="mt-4 text-2xl font-semibold md:text-4xl">{capitolo.titolo}</h2>
+              {capitolo.sottotitolo && (
+                <p className="testo-tenue mt-2.5 max-w-2xl text-lg">{capitolo.sottotitolo}</p>
+              )}
+            </header>
+          )}
 
-        <section className="grid gap-5 md:grid-cols-[180px_1fr] md:gap-10">
-          <h2 className="occhiello pt-2">Come funziona adesso</h2>
-          <p className="max-w-[62ch] text-[17px] leading-[1.75]">
-            {progetto.comeFunzionaAdesso}
-          </p>
-        </section>
-      </div>
+          <div
+            className={`space-y-28 md:space-y-36 ${
+              progetto.capitoli.length > 1 ? "mt-20" : "mt-28 md:mt-40"
+            }`}
+          >
+            <Contesto contesto={capitolo.contesto} />
+            <Decisione decisione={capitolo.decisione} />
+            <Passaggi passaggi={capitolo.passaggi} />
+            <Strumenti strumenti={capitolo.strumenti} />
+
+            <section className="grid gap-5 md:grid-cols-[180px_1fr] md:gap-10">
+              <h2 className="occhiello pt-2">Come funziona adesso</h2>
+              <p className="max-w-[62ch] text-[17px] leading-[1.75]">
+                {capitolo.comeFunzionaAdesso}
+              </p>
+            </section>
+          </div>
+        </div>
+      ))}
 
       <Galleria immagini={progetto.galleria} />
 

@@ -1,6 +1,6 @@
-import type { Progetto } from "@/data/progetti";
+import type { Capitolo } from "@/data/progetti";
 
-export function Contesto({ contesto }: { contesto: Progetto["contesto"] }) {
+export function Contesto({ contesto }: { contesto: Capitolo["contesto"] }) {
   return (
     <section className="grid gap-5 md:grid-cols-[180px_1fr] md:gap-10">
       <h2 className="occhiello pt-2">Il contesto</h2>

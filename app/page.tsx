@@ -22,7 +22,7 @@ export default function Home() {
         <p className="occhiello">Lavori</p>
       </header>
 
-      <div className="flex flex-1 items-center py-16 md:py-12">
+      <div className="flex flex-1 items-center py-16 md:py-8">
         <IndiceProgetti />
       </div>
 

@@ -1,6 +1,6 @@
-import type { Progetto } from "@/data/progetti";
+import type { Capitolo } from "@/data/progetti";
 
-export function Passaggi({ passaggi }: { passaggi: Progetto["passaggi"] }) {
+export function Passaggi({ passaggi }: { passaggi: Capitolo["passaggi"] }) {
   return (
     <section>
       <h2 className="occhiello">Come l&rsquo;abbiamo costruito</h2>
